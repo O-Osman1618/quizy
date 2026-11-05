@@ -1,0 +1,1657 @@
+[
+  {
+    "id": "colors",
+    "name": "الألوان",
+    "emoji": "🎨",
+    "questions": [
+      {
+        "id": 1,
+        "question": "ما لون الموز؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أحمر",
+            "image": "🔴"
+          },
+          {
+            "id": "b",
+            "text": "أصفر",
+            "image": "🟡"
+          },
+          {
+            "id": "c",
+            "text": "أزرق",
+            "image": "🔵"
+          },
+          {
+            "id": "d",
+            "text": "بنفسجي",
+            "image": "🟣"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 2,
+        "question": "ما لون العشب؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أخضر",
+            "image": "🟢"
+          },
+          {
+            "id": "b",
+            "text": "برتقالي",
+            "image": "🟠"
+          },
+          {
+            "id": "c",
+            "text": "أسود",
+            "image": "⚫"
+          },
+          {
+            "id": "d",
+            "text": "أحمر",
+            "image": "🔴"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 3,
+        "question": "ما لون السماء في النهار؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "بني",
+            "image": "🟤"
+          },
+          {
+            "id": "b",
+            "text": "أزرق",
+            "image": "🔵"
+          },
+          {
+            "id": "c",
+            "text": "أخضر",
+            "image": "🟢"
+          },
+          {
+            "id": "d",
+            "text": "أصفر",
+            "image": "🟡"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 4,
+        "question": "ما لون الطماطم؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أخضر",
+            "image": "🟢"
+          },
+          {
+            "id": "b",
+            "text": "أزرق",
+            "image": "🔵"
+          },
+          {
+            "id": "c",
+            "text": "أحمر",
+            "image": "🔴"
+          },
+          {
+            "id": "d",
+            "text": "أبيض",
+            "image": "⚪"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 5,
+        "question": "ما لون البرتقالة؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "بنفسجي",
+            "image": "🟣"
+          },
+          {
+            "id": "b",
+            "text": "برتقالي",
+            "image": "🟠"
+          },
+          {
+            "id": "c",
+            "text": "أسود",
+            "image": "⚫"
+          },
+          {
+            "id": "d",
+            "text": "أزرق",
+            "image": "🔵"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 6,
+        "question": "ما لون الثلج؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أحمر",
+            "image": "🔴"
+          },
+          {
+            "id": "b",
+            "text": "أخضر",
+            "image": "🟢"
+          },
+          {
+            "id": "c",
+            "text": "بني",
+            "image": "🟤"
+          },
+          {
+            "id": "d",
+            "text": "أبيض",
+            "image": "⚪"
+          }
+        ],
+        "correct": "d"
+      },
+      {
+        "id": 7,
+        "question": "ما لون الشوكولاتة؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "بني",
+            "image": "🟤"
+          },
+          {
+            "id": "b",
+            "text": "أصفر",
+            "image": "🟡"
+          },
+          {
+            "id": "c",
+            "text": "أزرق",
+            "image": "🔵"
+          },
+          {
+            "id": "d",
+            "text": "برتقالي",
+            "image": "🟠"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 8,
+        "question": "ما لون الليل المظلم؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أبيض",
+            "image": "⚪"
+          },
+          {
+            "id": "b",
+            "text": "أصفر",
+            "image": "🟡"
+          },
+          {
+            "id": "c",
+            "text": "أسود",
+            "image": "⚫"
+          },
+          {
+            "id": "d",
+            "text": "أخضر",
+            "image": "🟢"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 9,
+        "question": "ما لون الباذنجان؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "بنفسجي",
+            "image": "🟣"
+          },
+          {
+            "id": "b",
+            "text": "أحمر",
+            "image": "🔴"
+          },
+          {
+            "id": "c",
+            "text": "أصفر",
+            "image": "🟡"
+          },
+          {
+            "id": "d",
+            "text": "أبيض",
+            "image": "⚪"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 10,
+        "question": "ما لون الشمس؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أزرق",
+            "image": "🔵"
+          },
+          {
+            "id": "b",
+            "text": "أخضر",
+            "image": "🟢"
+          },
+          {
+            "id": "c",
+            "text": "أصفر",
+            "image": "🟡"
+          },
+          {
+            "id": "d",
+            "text": "بني",
+            "image": "🟤"
+          }
+        ],
+        "correct": "c"
+      }
+    ]
+  },
+  {
+    "id": "food",
+    "name": "الطعام",
+    "emoji": "🍎",
+    "questions": [
+      {
+        "id": 1,
+        "question": "أي فاكهة صفراء وطويلة؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "تفاح",
+            "image": "🍎"
+          },
+          {
+            "id": "b",
+            "text": "موز",
+            "image": "🍌"
+          },
+          {
+            "id": "c",
+            "text": "عنب",
+            "image": "🍇"
+          },
+          {
+            "id": "d",
+            "text": "بطيخ",
+            "image": "🍉"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 2,
+        "question": "أي خضار لونه برتقالي؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "بطاطس",
+            "image": "🥔"
+          },
+          {
+            "id": "b",
+            "text": "ذرة",
+            "image": "🌽"
+          },
+          {
+            "id": "c",
+            "text": "جزر",
+            "image": "🥕"
+          },
+          {
+            "id": "d",
+            "text": "باذنجان",
+            "image": "🍆"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 3,
+        "question": "ما الذي نشربه؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "حليب",
+            "image": "🥛"
+          },
+          {
+            "id": "b",
+            "text": "خبز",
+            "image": "🍞"
+          },
+          {
+            "id": "c",
+            "text": "بيتزا",
+            "image": "🍕"
+          },
+          {
+            "id": "d",
+            "text": "جزر",
+            "image": "🥕"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 4,
+        "question": "أي طعام نصنعه من القمح؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "موز",
+            "image": "🍌"
+          },
+          {
+            "id": "b",
+            "text": "جبن",
+            "image": "🧀"
+          },
+          {
+            "id": "c",
+            "text": "فراولة",
+            "image": "🍓"
+          },
+          {
+            "id": "d",
+            "text": "خبز",
+            "image": "🍞"
+          }
+        ],
+        "correct": "d"
+      },
+      {
+        "id": 5,
+        "question": "أي فاكهة صغيرة وحمراء وبذورها على سطحها؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "ليمون",
+            "image": "🍋"
+          },
+          {
+            "id": "b",
+            "text": "فراولة",
+            "image": "🍓"
+          },
+          {
+            "id": "c",
+            "text": "بطيخ",
+            "image": "🍉"
+          },
+          {
+            "id": "d",
+            "text": "موز",
+            "image": "🍌"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 6,
+        "question": "أي طعام نأكله في عيد الميلاد؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "بصل",
+            "image": "🧅"
+          },
+          {
+            "id": "b",
+            "text": "بروكلي",
+            "image": "🥦"
+          },
+          {
+            "id": "c",
+            "text": "كعكة",
+            "image": "🎂"
+          },
+          {
+            "id": "d",
+            "text": "خبز",
+            "image": "🍞"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 7,
+        "question": "أي طعام بارد وحلو نأكله في الصيف؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "آيس كريم",
+            "image": "🍦"
+          },
+          {
+            "id": "b",
+            "text": "شوربة",
+            "image": "🍲"
+          },
+          {
+            "id": "c",
+            "text": "خبز",
+            "image": "🍞"
+          },
+          {
+            "id": "d",
+            "text": "بيتزا",
+            "image": "🍕"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 8,
+        "question": "أي فاكهة كبيرة خضراء ومن الداخل حمراء؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "تفاح",
+            "image": "🍎"
+          },
+          {
+            "id": "b",
+            "text": "موز",
+            "image": "🍌"
+          },
+          {
+            "id": "c",
+            "text": "بطيخ",
+            "image": "🍉"
+          },
+          {
+            "id": "d",
+            "text": "ليمون",
+            "image": "🍋"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 9,
+        "question": "أي شيء طعمه حامض؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "كعكة",
+            "image": "🎂"
+          },
+          {
+            "id": "b",
+            "text": "آيس كريم",
+            "image": "🍦"
+          },
+          {
+            "id": "c",
+            "text": "عسل",
+            "image": "🍯"
+          },
+          {
+            "id": "d",
+            "text": "ليمون",
+            "image": "🍋"
+          }
+        ],
+        "correct": "d"
+      },
+      {
+        "id": 10,
+        "question": "ما الطعام الحلو الذي يصنعه النحل؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "عسل",
+            "image": "🍯"
+          },
+          {
+            "id": "b",
+            "text": "جبن",
+            "image": "🧀"
+          },
+          {
+            "id": "c",
+            "text": "خبز",
+            "image": "🍞"
+          },
+          {
+            "id": "d",
+            "text": "بيض",
+            "image": "🥚"
+          }
+        ],
+        "correct": "a"
+      }
+    ]
+  },
+  {
+    "id": "animals",
+    "name": "الحيوانات",
+    "emoji": "🦁",
+    "questions": [
+      {
+        "id": 1,
+        "question": "أي حيوان يقول مياو؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "قطة",
+            "image": "🐱"
+          },
+          {
+            "id": "b",
+            "text": "كلب",
+            "image": "🐶"
+          },
+          {
+            "id": "c",
+            "text": "بقرة",
+            "image": "🐮"
+          },
+          {
+            "id": "d",
+            "text": "أسد",
+            "image": "🦁"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 2,
+        "question": "أي حيوان ينبح؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أرنب",
+            "image": "🐰"
+          },
+          {
+            "id": "b",
+            "text": "كلب",
+            "image": "🐶"
+          },
+          {
+            "id": "c",
+            "text": "حصان",
+            "image": "🐴"
+          },
+          {
+            "id": "d",
+            "text": "بطة",
+            "image": "🦆"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 3,
+        "question": "أي حيوان له خرطوم طويل؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "زرافة",
+            "image": "🦒"
+          },
+          {
+            "id": "b",
+            "text": "قرد",
+            "image": "🐵"
+          },
+          {
+            "id": "c",
+            "text": "فيل",
+            "image": "🐘"
+          },
+          {
+            "id": "d",
+            "text": "دب",
+            "image": "🐻"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 4,
+        "question": "أي حيوان له رقبة طويلة جداً؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "خنزير",
+            "image": "🐷"
+          },
+          {
+            "id": "b",
+            "text": "زرافة",
+            "image": "🦒"
+          },
+          {
+            "id": "c",
+            "text": "خروف",
+            "image": "🐑"
+          },
+          {
+            "id": "d",
+            "text": "فيل",
+            "image": "🐘"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 5,
+        "question": "أي حيوان يعيش في الماء؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "دجاجة",
+            "image": "🐔"
+          },
+          {
+            "id": "b",
+            "text": "أرنب",
+            "image": "🐰"
+          },
+          {
+            "id": "c",
+            "text": "قطة",
+            "image": "🐱"
+          },
+          {
+            "id": "d",
+            "text": "سمكة",
+            "image": "🐟"
+          }
+        ],
+        "correct": "d"
+      },
+      {
+        "id": 6,
+        "question": "أي حيوان يعطينا الحليب؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "بقرة",
+            "image": "🐮"
+          },
+          {
+            "id": "b",
+            "text": "ثعلب",
+            "image": "🦊"
+          },
+          {
+            "id": "c",
+            "text": "نمر",
+            "image": "🐯"
+          },
+          {
+            "id": "d",
+            "text": "ضفدع",
+            "image": "🐸"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 7,
+        "question": "أي حيوان يحب أكل الجزر؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أسد",
+            "image": "🦁"
+          },
+          {
+            "id": "b",
+            "text": "أرنب",
+            "image": "🐰"
+          },
+          {
+            "id": "c",
+            "text": "دلفين",
+            "image": "🐬"
+          },
+          {
+            "id": "d",
+            "text": "نسر",
+            "image": "🦅"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 8,
+        "question": "من هو ملك الغابة؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أرنب",
+            "image": "🐰"
+          },
+          {
+            "id": "b",
+            "text": "خروف",
+            "image": "🐑"
+          },
+          {
+            "id": "c",
+            "text": "أسد",
+            "image": "🦁"
+          },
+          {
+            "id": "d",
+            "text": "بطة",
+            "image": "🦆"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 9,
+        "question": "أي حيوان يطير في السماء؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "فيل",
+            "image": "🐘"
+          },
+          {
+            "id": "b",
+            "text": "سلحفاة",
+            "image": "🐢"
+          },
+          {
+            "id": "c",
+            "text": "بقرة",
+            "image": "🐮"
+          },
+          {
+            "id": "d",
+            "text": "عصفور",
+            "image": "🐦"
+          }
+        ],
+        "correct": "d"
+      },
+      {
+        "id": 10,
+        "question": "أي حيوان يقفز ويعيش قرب البركة؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "ضفدع",
+            "image": "🐸"
+          },
+          {
+            "id": "b",
+            "text": "حصان",
+            "image": "🐴"
+          },
+          {
+            "id": "c",
+            "text": "دب",
+            "image": "🐻"
+          },
+          {
+            "id": "d",
+            "text": "كلب",
+            "image": "🐶"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 11,
+        "question": "أي حيوان له خطوط سوداء وبيضاء؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أسد",
+            "image": "🦁"
+          },
+          {
+            "id": "b",
+            "text": "حمار وحشي",
+            "image": "🦓"
+          },
+          {
+            "id": "c",
+            "text": "قطة",
+            "image": "🐱"
+          },
+          {
+            "id": "d",
+            "text": "أرنب",
+            "image": "🐰"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 12,
+        "question": "أي حيوان يحمل بيته على ظهره؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "قرد",
+            "image": "🐵"
+          },
+          {
+            "id": "b",
+            "text": "بطة",
+            "image": "🦆"
+          },
+          {
+            "id": "c",
+            "text": "سلحفاة",
+            "image": "🐢"
+          },
+          {
+            "id": "d",
+            "text": "فراشة",
+            "image": "🦋"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 13,
+        "question": "أي حيوان يحب أكل الموز؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "سمكة",
+            "image": "🐟"
+          },
+          {
+            "id": "b",
+            "text": "ذئب",
+            "image": "🐺"
+          },
+          {
+            "id": "c",
+            "text": "بومة",
+            "image": "🦉"
+          },
+          {
+            "id": "d",
+            "text": "قرد",
+            "image": "🐵"
+          }
+        ],
+        "correct": "d"
+      },
+      {
+        "id": 14,
+        "question": "أي حيوان يصيح في الصباح؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "ديك",
+            "image": "🐓"
+          },
+          {
+            "id": "b",
+            "text": "حوت",
+            "image": "🐋"
+          },
+          {
+            "id": "c",
+            "text": "دب",
+            "image": "🐻"
+          },
+          {
+            "id": "d",
+            "text": "ثعلب",
+            "image": "🦊"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 15,
+        "question": "أي حيوان يعطينا البيض؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "بقرة",
+            "image": "🐮"
+          },
+          {
+            "id": "b",
+            "text": "دجاجة",
+            "image": "🐔"
+          },
+          {
+            "id": "c",
+            "text": "حصان",
+            "image": "🐴"
+          },
+          {
+            "id": "d",
+            "text": "كلب",
+            "image": "🐶"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 16,
+        "question": "أي حيوان يعطينا الصوف؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أسد",
+            "image": "🦁"
+          },
+          {
+            "id": "b",
+            "text": "بطة",
+            "image": "🦆"
+          },
+          {
+            "id": "c",
+            "text": "خروف",
+            "image": "🐑"
+          },
+          {
+            "id": "d",
+            "text": "فيل",
+            "image": "🐘"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 17,
+        "question": "أي حيوان يقول كواك كواك؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "حصان",
+            "image": "🐴"
+          },
+          {
+            "id": "b",
+            "text": "قرد",
+            "image": "🐵"
+          },
+          {
+            "id": "c",
+            "text": "خروف",
+            "image": "🐑"
+          },
+          {
+            "id": "d",
+            "text": "بطة",
+            "image": "🦆"
+          }
+        ],
+        "correct": "d"
+      },
+      {
+        "id": 18,
+        "question": "أي حيوان صغير يصنع العسل؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "نحلة",
+            "image": "🐝"
+          },
+          {
+            "id": "b",
+            "text": "فراشة",
+            "image": "🦋"
+          },
+          {
+            "id": "c",
+            "text": "نملة",
+            "image": "🐜"
+          },
+          {
+            "id": "d",
+            "text": "دودة",
+            "image": "🐛"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 19,
+        "question": "ما هو أكبر حيوان في البحر؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "سمكة",
+            "image": "🐟"
+          },
+          {
+            "id": "b",
+            "text": "حوت",
+            "image": "🐋"
+          },
+          {
+            "id": "c",
+            "text": "دلفين",
+            "image": "🐬"
+          },
+          {
+            "id": "d",
+            "text": "أخطبوط",
+            "image": "🐙"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 20,
+        "question": "أي طائر لا يطير ويعيش في الثلج؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "نسر",
+            "image": "🦅"
+          },
+          {
+            "id": "b",
+            "text": "ببغاء",
+            "image": "🦜"
+          },
+          {
+            "id": "c",
+            "text": "بطريق",
+            "image": "🐧"
+          },
+          {
+            "id": "d",
+            "text": "بومة",
+            "image": "🦉"
+          }
+        ],
+        "correct": "c"
+      }
+    ]
+  },
+  {
+    "id": "furniture",
+    "name": "الأثاث",
+    "emoji": "🛋️",
+    "questions": [
+      {
+        "id": 1,
+        "question": "أين ننام؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "سرير",
+            "image": "🛏️"
+          },
+          {
+            "id": "b",
+            "text": "كرسي",
+            "image": "🪑"
+          },
+          {
+            "id": "c",
+            "text": "باب",
+            "image": "🚪"
+          },
+          {
+            "id": "d",
+            "text": "نافذة",
+            "image": "🪟"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 2,
+        "question": "ما الذي نجلس عليه؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "مرآة",
+            "image": "🪞"
+          },
+          {
+            "id": "b",
+            "text": "كرسي",
+            "image": "🪑"
+          },
+          {
+            "id": "c",
+            "text": "باب",
+            "image": "🚪"
+          },
+          {
+            "id": "d",
+            "text": "تلفاز",
+            "image": "📺"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 3,
+        "question": "أين نرى وجهنا؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "مرآة",
+            "image": "🪞"
+          },
+          {
+            "id": "b",
+            "text": "ساعة",
+            "image": "🕰️"
+          },
+          {
+            "id": "c",
+            "text": "باب",
+            "image": "🚪"
+          },
+          {
+            "id": "d",
+            "text": "كرسي",
+            "image": "🪑"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 4,
+        "question": "ما الذي يعطينا الضوء في الغرفة؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "سرير",
+            "image": "🛏️"
+          },
+          {
+            "id": "b",
+            "text": "أريكة",
+            "image": "🛋️"
+          },
+          {
+            "id": "c",
+            "text": "مصباح",
+            "image": "💡"
+          },
+          {
+            "id": "d",
+            "text": "باب",
+            "image": "🚪"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 5,
+        "question": "من أين ندخل إلى البيت؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "سرير",
+            "image": "🛏️"
+          },
+          {
+            "id": "b",
+            "text": "تلفاز",
+            "image": "📺"
+          },
+          {
+            "id": "c",
+            "text": "ساعة",
+            "image": "🕰️"
+          },
+          {
+            "id": "d",
+            "text": "باب",
+            "image": "🚪"
+          }
+        ],
+        "correct": "d"
+      },
+      {
+        "id": 6,
+        "question": "أين نشاهد الرسوم المتحركة؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "تلفاز",
+            "image": "📺"
+          },
+          {
+            "id": "b",
+            "text": "ساعة",
+            "image": "🕰️"
+          },
+          {
+            "id": "c",
+            "text": "مرآة",
+            "image": "🪞"
+          },
+          {
+            "id": "d",
+            "text": "كرسي",
+            "image": "🪑"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 7,
+        "question": "ما الذي يخبرنا بالوقت؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "سرير",
+            "image": "🛏️"
+          },
+          {
+            "id": "b",
+            "text": "باب",
+            "image": "🚪"
+          },
+          {
+            "id": "c",
+            "text": "ساعة",
+            "image": "🕰️"
+          },
+          {
+            "id": "d",
+            "text": "أريكة",
+            "image": "🛋️"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 8,
+        "question": "من أين ننظر إلى الشارع؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "نافذة",
+            "image": "🪟"
+          },
+          {
+            "id": "b",
+            "text": "مرآة",
+            "image": "🪞"
+          },
+          {
+            "id": "c",
+            "text": "سرير",
+            "image": "🛏️"
+          },
+          {
+            "id": "d",
+            "text": "مصباح",
+            "image": "💡"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 9,
+        "question": "أين تجلس العائلة لتشاهد التلفاز؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أريكة",
+            "image": "🛋️"
+          },
+          {
+            "id": "b",
+            "text": "حوض استحمام",
+            "image": "🛁"
+          },
+          {
+            "id": "c",
+            "text": "باب",
+            "image": "🚪"
+          },
+          {
+            "id": "d",
+            "text": "مرآة",
+            "image": "🪞"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 10,
+        "question": "أين نستحم؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "سرير",
+            "image": "🛏️"
+          },
+          {
+            "id": "b",
+            "text": "كرسي",
+            "image": "🪑"
+          },
+          {
+            "id": "c",
+            "text": "حوض استحمام",
+            "image": "🛁"
+          },
+          {
+            "id": "d",
+            "text": "أريكة",
+            "image": "🛋️"
+          }
+        ],
+        "correct": "c"
+      }
+    ]
+  },
+  {
+    "id": "body",
+    "name": "أجزاء الجسم",
+    "emoji": "🖐️",
+    "questions": [
+      {
+        "id": 1,
+        "question": "بماذا نرى؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "عينان",
+            "image": "👀"
+          },
+          {
+            "id": "b",
+            "text": "أذن",
+            "image": "👂"
+          },
+          {
+            "id": "c",
+            "text": "أنف",
+            "image": "👃"
+          },
+          {
+            "id": "d",
+            "text": "يد",
+            "image": "🖐️"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 2,
+        "question": "بماذا نسمع؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "عينان",
+            "image": "👀"
+          },
+          {
+            "id": "b",
+            "text": "أذن",
+            "image": "👂"
+          },
+          {
+            "id": "c",
+            "text": "قدم",
+            "image": "🦶"
+          },
+          {
+            "id": "d",
+            "text": "فم",
+            "image": "👄"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 3,
+        "question": "بماذا نشم رائحة الزهور؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أنف",
+            "image": "👃"
+          },
+          {
+            "id": "b",
+            "text": "قدم",
+            "image": "🦶"
+          },
+          {
+            "id": "c",
+            "text": "يد",
+            "image": "🖐️"
+          },
+          {
+            "id": "d",
+            "text": "أذن",
+            "image": "👂"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 4,
+        "question": "بماذا نتكلم؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "قدم",
+            "image": "🦶"
+          },
+          {
+            "id": "b",
+            "text": "يد",
+            "image": "🖐️"
+          },
+          {
+            "id": "c",
+            "text": "فم",
+            "image": "👄"
+          },
+          {
+            "id": "d",
+            "text": "أذن",
+            "image": "👂"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 5,
+        "question": "بماذا نمسك الأشياء؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "يد",
+            "image": "🖐️"
+          },
+          {
+            "id": "b",
+            "text": "أنف",
+            "image": "👃"
+          },
+          {
+            "id": "c",
+            "text": "أذن",
+            "image": "👂"
+          },
+          {
+            "id": "d",
+            "text": "قدم",
+            "image": "🦶"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 6,
+        "question": "بماذا نمشي ونجري؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "فم",
+            "image": "👄"
+          },
+          {
+            "id": "b",
+            "text": "قدم",
+            "image": "🦶"
+          },
+          {
+            "id": "c",
+            "text": "أنف",
+            "image": "👃"
+          },
+          {
+            "id": "d",
+            "text": "عينان",
+            "image": "👀"
+          }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": 7,
+        "question": "بماذا نمضغ الطعام؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "أسنان",
+            "image": "🦷"
+          },
+          {
+            "id": "b",
+            "text": "أذن",
+            "image": "👂"
+          },
+          {
+            "id": "c",
+            "text": "أنف",
+            "image": "👃"
+          },
+          {
+            "id": "d",
+            "text": "قدم",
+            "image": "🦶"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 8,
+        "question": "بماذا نفكر؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "قدم",
+            "image": "🦶"
+          },
+          {
+            "id": "b",
+            "text": "يد",
+            "image": "🖐️"
+          },
+          {
+            "id": "c",
+            "text": "دماغ",
+            "image": "🧠"
+          },
+          {
+            "id": "d",
+            "text": "أنف",
+            "image": "👃"
+          }
+        ],
+        "correct": "c"
+      },
+      {
+        "id": 9,
+        "question": "ما الذي ينبض في صدرنا؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "قلب",
+            "image": "❤️"
+          },
+          {
+            "id": "b",
+            "text": "أذن",
+            "image": "👂"
+          },
+          {
+            "id": "c",
+            "text": "قدم",
+            "image": "🦶"
+          },
+          {
+            "id": "d",
+            "text": "يد",
+            "image": "🖐️"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "id": 10,
+        "question": "بماذا نتذوق الطعام؟",
+        "answers": [
+          {
+            "id": "a",
+            "text": "لسان",
+            "image": "👅"
+          },
+          {
+            "id": "b",
+            "text": "أذن",
+            "image": "👂"
+          },
+          {
+            "id": "c",
+            "text": "قدم",
+            "image": "🦶"
+          },
+          {
+            "id": "d",
+            "text": "عينان",
+            "image": "👀"
+          }
+        ],
+        "correct": "a"
+      }
+    ]
+  }
+]

@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { passMark, prepareRound, type Phase, type Question } from "@/lib/quiz";
+import {
+  categories,
+  passMark,
+  prepareRound,
+  type Category,
+  type Phase,
+  type Question,
+} from "@/lib/quiz";
 import {
   playCelebrate,
   playCorrect,
@@ -9,6 +16,7 @@ import {
   playTryAgain,
   playWrong,
 } from "@/lib/sounds";
+import CategoryScreen from "./CategoryScreen";
 import CelebrationScreen from "./CelebrationScreen";
 import QuizScreen from "./QuizScreen";
 import SoundToggle from "./SoundToggle";
@@ -19,6 +27,7 @@ const NEXT_QUESTION_DELAY_MS = 1300;
 
 export default function QuizGame() {
   const [phase, setPhase] = useState<Phase>("start");
+  const [category, setCategory] = useState<Category | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -48,9 +57,15 @@ export default function QuizGame() {
     return () => clearTimeout(timer);
   }, [selected, index, total, score]);
 
-  function startGame() {
+  function showCategories() {
     playTap();
-    setQuestions(prepareRound());
+    setPhase("categories");
+  }
+
+  function startRound(chosen: Category) {
+    playTap();
+    setCategory(chosen);
+    setQuestions(prepareRound(chosen));
     setIndex(0);
     setScore(0);
     setSelected(null);
@@ -75,7 +90,10 @@ export default function QuizGame() {
           <SoundToggle />
         </div>
       )}
-      {phase === "start" && <StartScreen onStart={startGame} />}
+      {phase === "start" && <StartScreen onStart={showCategories} />}
+      {phase === "categories" && (
+        <CategoryScreen categories={categories} onSelect={startRound} />
+      )}
       {phase === "playing" && (
         <QuizScreen
           question={questions[index]}
@@ -87,10 +105,20 @@ export default function QuizGame() {
         />
       )}
       {phase === "celebration" && (
-        <CelebrationScreen score={score} total={total} onRestart={startGame} />
+        <CelebrationScreen
+          score={score}
+          total={total}
+          onPlayAgain={() => category && startRound(category)}
+          onChooseCategory={showCategories}
+        />
       )}
       {phase === "result" && (
-        <ResultScreen score={score} total={total} onRestart={startGame} />
+        <ResultScreen
+          score={score}
+          total={total}
+          onPlayAgain={() => category && startRound(category)}
+          onChooseCategory={showCategories}
+        />
       )}
     </main>
   );

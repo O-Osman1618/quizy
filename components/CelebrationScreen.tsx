@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { Heart, PartyPopper, RotateCcw, Sparkles, Star, Trophy } from "lucide-react";
+import { Heart, PartyPopper, Sparkles, Star, Trophy } from "lucide-react";
+import { questionsWord } from "@/lib/quiz";
+import EndActions from "./EndActions";
 
 type Props = {
   score: number;
   total: number;
-  onRestart: () => void;
+  onPlayAgain: () => void;
+  onChooseCategory: () => void;
 };
 
 const CONFETTI_COLORS = [
@@ -47,7 +50,12 @@ const FLOATERS = [
   { Icon: PartyPopper, className: "bottom-[16%] end-[8%] text-orange-400", delay: "1.8s" },
 ];
 
-export default function CelebrationScreen({ score, total, onRestart }: Props) {
+export default function CelebrationScreen({
+  score,
+  total,
+  onPlayAgain,
+  onChooseCategory,
+}: Props) {
   // This screen only mounts after user interaction (never during SSR),
   // so random values in the initializer cannot cause a hydration mismatch.
   const [pieces] = useState(makePieces);
@@ -96,22 +104,12 @@ export default function CelebrationScreen({ score, total, onRestart }: Props) {
         أحسنت يا بطل! 🎉
       </h1>
       <p className="text-[clamp(1.25rem,5vw,2rem)] font-bold">
-        أجبت على {score} من {total} أسئلة بشكل صحيح
+        أجبت على {score} من {total} {questionsWord(total)} بشكل صحيح
       </p>
-      <PlayAgainButton onClick={onRestart} />
+      <EndActions
+        onPlayAgain={onPlayAgain}
+        onChooseCategory={onChooseCategory}
+      />
     </section>
-  );
-}
-
-export function PlayAgainButton({ onClick }: { onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="relative z-10 mt-2 flex w-full max-w-xs items-center justify-center gap-3 rounded-full bg-pop-mint px-8 py-4 text-[clamp(1.25rem,min(6vw,6dvh),2.25rem)] short:py-2 font-extrabold text-ink shadow-[0_8px_0_0_#34b98a] transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] select-none hover:scale-105 active:translate-y-1 active:scale-95 active:shadow-[0_3px_0_0_#34b98a]"
-    >
-      <RotateCcw className="size-7" aria-hidden strokeWidth={3} />
-      العب مرة أخرى
-    </button>
   );
 }

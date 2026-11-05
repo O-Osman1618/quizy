@@ -1,4 +1,4 @@
-import questionsData from "@/data/questions.json";
+import categoriesData from "@/data/categories.json";
 
 export type Answer = {
   id: string;
@@ -13,11 +13,23 @@ export type Question = {
   correct: string;
 };
 
-export type Phase = "start" | "playing" | "celebration" | "result";
+export type Category = {
+  id: string;
+  name: string;
+  emoji: string;
+  questions: Question[];
+};
+
+export type Phase =
+  | "start"
+  | "categories"
+  | "playing"
+  | "celebration"
+  | "result";
 
 export const PASS_RATIO = 0.75;
 
-const allQuestions = questionsData as Question[];
+export const categories = categoriesData as Category[];
 
 export function shuffle<T>(items: readonly T[]): T[] {
   const copy = [...items];
@@ -28,9 +40,9 @@ export function shuffle<T>(items: readonly T[]): T[] {
   return copy;
 }
 
-/** All questions in random order, with the answers of each also shuffled. */
-export function prepareRound(): Question[] {
-  return shuffle(allQuestions).map((q) => ({
+/** A category's questions in random order, with each question's answers shuffled too. */
+export function prepareRound(category: Category): Question[] {
+  return shuffle(category.questions).map((q) => ({
     ...q,
     answers: shuffle(q.answers),
   }));
@@ -38,4 +50,9 @@ export function prepareRound(): Question[] {
 
 export function passMark(total: number): number {
   return Math.ceil(total * PASS_RATIO);
+}
+
+/** Arabic counted noun: 3-10 take the plural "أسئلة", 11+ take the singular "سؤالاً". */
+export function questionsWord(count: number): string {
+  return count > 10 ? "سؤالاً" : "أسئلة";
 }
