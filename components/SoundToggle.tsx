@@ -9,6 +9,7 @@ import {
   setMuted,
   subscribeMuted,
 } from "@/lib/sounds";
+import { stopSpeech } from "@/lib/speech";
 
 export default function SoundToggle() {
   const muted = useSyncExternalStore(subscribeMuted, getMuted, getServerMuted);
@@ -16,6 +17,7 @@ export default function SoundToggle() {
   function toggle() {
     const next = !muted;
     setMuted(next);
+    if (next) stopSpeech();
     // Give feedback when turning the sound back on.
     if (!next) playTap();
   }

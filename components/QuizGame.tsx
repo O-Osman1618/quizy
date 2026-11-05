@@ -16,6 +16,7 @@ import {
   playTryAgain,
   playWrong,
 } from "@/lib/sounds";
+import { speakQuestion, stopSpeech } from "@/lib/speech";
 import CategoryScreen from "./CategoryScreen";
 import CelebrationScreen from "./CelebrationScreen";
 import QuizScreen from "./QuizScreen";
@@ -23,7 +24,8 @@ import SoundToggle from "./SoundToggle";
 import ResultScreen from "./ResultScreen";
 import StartScreen from "./StartScreen";
 
-const NEXT_QUESTION_DELAY_MS = 1300;
+// Long enough for a young child to see which answer was right before moving on.
+const NEXT_QUESTION_DELAY_MS = 2800;
 
 export default function QuizGame() {
   const [phase, setPhase] = useState<Phase>("start");
@@ -51,13 +53,15 @@ export default function QuizGame() {
       } else {
         setIndex(index + 1);
         setSelected(null);
+        if (category) speakQuestion(category.id, questions[index + 1]);
       }
     }, NEXT_QUESTION_DELAY_MS);
 
     return () => clearTimeout(timer);
-  }, [selected, index, total, score]);
+  }, [selected, index, total, score, category, questions]);
 
   function showCategories() {
+    stopSpeech();
     playTap();
     setPhase("categories");
   }
@@ -65,7 +69,10 @@ export default function QuizGame() {
   function startRound(chosen: Category) {
     playTap();
     setCategory(chosen);
-    setQuestions(prepareRound(chosen));
+    const round = prepareRound(chosen);
+    setQuestions(round);
+    // Called straight from the tap, so the browser allows audio from here on.
+    speakQuestion(chosen.id, round[0]);
     setIndex(0);
     setScore(0);
     setSelected(null);
@@ -74,6 +81,7 @@ export default function QuizGame() {
 
   function handleSelect(answerId: string) {
     if (selected !== null) return;
+    stopSpeech();
     setSelected(answerId);
     if (answerId === questions[index].correct) {
       setScore((s) => s + 1);
@@ -102,6 +110,7 @@ export default function QuizGame() {
           score={score}
           selected={selected}
           onSelect={handleSelect}
+          onReplay={() => category && speakQuestion(category.id, questions[index])}
         />
       )}
       {phase === "celebration" && (

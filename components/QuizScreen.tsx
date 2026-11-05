@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { AudioLines, Star } from "lucide-react";
 import type { Question } from "@/lib/quiz";
 import AnswerCard from "./AnswerCard";
 import SoundToggle from "./SoundToggle";
@@ -10,6 +10,7 @@ type Props = {
   score: number;
   selected: string | null;
   onSelect: (id: string) => void;
+  onReplay: () => void;
 };
 
 export default function QuizScreen({
@@ -19,6 +20,7 @@ export default function QuizScreen({
   score,
   selected,
   onSelect,
+  onReplay,
 }: Props) {
   const progress = ((index + (selected !== null ? 1 : 0)) / total) * 100;
   const answeredRight = selected !== null && selected === question.correct;
@@ -53,9 +55,19 @@ export default function QuizScreen({
         </div>
       </header>
 
-      <h2 className="py-1 text-center text-[clamp(1.375rem,min(6.5vw,5.5dvh),2.75rem)] leading-snug font-extrabold">
-        {question.question}
-      </h2>
+      <div className="flex items-center justify-center gap-3 py-1">
+        <h2 className="text-center text-[clamp(1.375rem,min(6.5vw,5.5dvh),2.75rem)] leading-snug font-extrabold">
+          {question.question}
+        </h2>
+        <button
+          type="button"
+          onClick={onReplay}
+          aria-label="اسمع السؤال"
+          className="grid size-12 shrink-0 place-items-center rounded-full bg-pop-purple text-white shadow-[0_4px_0_0_#7c5fe0] transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] select-none hover:scale-110 active:translate-y-0.5 active:scale-90 short:size-10"
+        >
+          <AudioLines className="size-6" aria-hidden strokeWidth={2.5} />
+        </button>
+      </div>
 
       <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-3 pb-2 sm:gap-6 short:grid-cols-4 short:grid-rows-1 short:gap-3">
         {question.answers.map((answer, i) => (
