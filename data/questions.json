@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "question": "أي حيوان يقول مياو؟",
+    "answers": [
+      { "id": "a", "text": "قطة", "image": "🐱" },
+      { "id": "b", "text": "كلب", "image": "🐶" },
+      { "id": "c", "text": "بقرة", "image": "🐮" },
+      { "id": "d", "text": "أسد", "image": "🦁" }
+    ],
+    "correct": "a"
+  },
+  {
+    "id": 2,
+    "question": "أي حيوان ينبح؟",
+    "answers": [
+      { "id": "a", "text": "أرنب", "image": "🐰" },
+      { "id": "b", "text": "كلب", "image": "🐶" },
+      { "id": "c", "text": "حصان", "image": "🐴" },
+      { "id": "d", "text": "بطة", "image": "🦆" }
+    ],
+    "correct": "b"
+  },
+  {
+    "id": 3,
+    "question": "أي حيوان له خرطوم طويل؟",
+    "answers": [
+      { "id": "a", "text": "زرافة", "image": "🦒" },
+      { "id": "b", "text": "قرد", "image": "🐵" },
+      { "id": "c", "text": "فيل", "image": "🐘" },
+      { "id": "d", "text": "دب", "image": "🐻" }
+    ],
+    "correct": "c"
+  },
+  {
+    "id": 4,
+    "question": "أي حيوان له رقبة طويلة جداً؟",
+    "answers": [
+      { "id": "a", "text": "خنزير", "image": "🐷" },
+      { "id": "b", "text": "زرافة", "image": "🦒" },
+      { "id": "c", "text": "خروف", "image": "🐑" },
+      { "id": "d", "text": "فيل", "image": "🐘" }
+    ],
+    "correct": "b"
+  },
+  {
+    "id": 5,
+    "question": "أي حيوان يعيش في الماء؟",
+    "answers": [
+      { "id": "a", "text": "دجاجة", "image": "🐔" },
+      { "id": "b", "text": "أرنب", "image": "🐰" },
+      { "id": "c", "text": "قطة", "image": "🐱" },
+      { "id": "d", "text": "سمكة", "image": "🐟" }
+    ],
+    "correct": "d"
+  },
+  {
+    "id": 6,
+    "question": "أي حيوان يعطينا الحليب؟",
+    "answers": [
+      { "id": "a", "text": "بقرة", "image": "🐮" },
+      { "id": "b", "text": "ثعلب", "image": "🦊" },
+      { "id": "c", "text": "نمر", "image": "🐯" },
+      { "id": "d", "text": "ضفدع", "image": "🐸" }
+    ],
+    "correct": "a"
+  },
+  {
+    "id": 7,
+    "question": "أي حيوان يحب أكل الجزر؟",
+    "answers": [
+      { "id": "a", "text": "أسد", "image": "🦁" },
+      { "id": "b", "text": "أرنب", "image": "🐰" },
+      { "id": "c", "text": "دلفين", "image": "🐬" },
+      { "id": "d", "text": "نسر", "image": "🦅" }
+    ],
+    "correct": "b"
+  },
+  {
+    "id": 8,
+    "question": "من هو ملك الغابة؟",
+    "answers": [
+      { "id": "a", "text": "أرنب", "image": "🐰" },
+      { "id": "b", "text": "خروف", "image": "🐑" },
+      { "id": "c", "text": "أسد", "image": "🦁" },
+      { "id": "d", "text": "بطة", "image": "🦆" }
+    ],
+    "correct": "c"
+  },
+  {
+    "id": 9,
+    "question": "أي حيوان يطير في السماء؟",
+    "answers": [
+      { "id": "a", "text": "فيل", "image": "🐘" },
+      { "id": "b", "text": "سلحفاة", "image": "🐢" },
+      { "id": "c", "text": "بقرة", "image": "🐮" },
+      { "id": "d", "text": "عصفور", "image": "🐦" }
+    ],
+    "correct": "d"
+  },
+  {
+    "id": 10,
+    "question": "أي حيوان يقفز ويعيش قرب البركة؟",
+    "answers": [
+      { "id": "a", "text": "ضفدع", "image": "🐸" },
+      { "id": "b", "text": "حصان", "image": "🐴" },
+      { "id": "c", "text": "دب", "image": "🐻" },
+      { "id": "d", "text": "كلب", "image": "🐶" }
+    ],
+    "correct": "a"
+  },
+  {
+    "id": 11,
+    "question": "أي حيوان له خطوط سوداء وبيضاء؟",
+    "answers": [
+      { "id": "a", "text": "أسد", "image": "🦁" },
+      { "id": "b", "text": "حمار وحشي", "image": "🦓" },
+      { "id": "c", "text": "قطة", "image": "🐱" },
+      { "id": "d", "text": "أرنب", "image": "🐰" }
+    ],
+    "correct": "b"
+  },
+  {
+    "id": 12,
+    "question": "أي حيوان يحمل بيته على ظهره؟",
+    "answers": [
+      { "id": "a", "text": "قرد", "image": "🐵" },
+      { "id": "b", "text": "بطة", "image": "🦆" },
+      { "id": "c", "text": "سلحفاة", "image": "🐢" },
+      { "id": "d", "text": "فراشة", "image": "🦋" }
+    ],
+    "correct": "c"
+  },
+  {
+    "id": 13,
+    "question": "أي حيوان يحب أكل الموز؟",
+    "answers": [
+      { "id": "a", "text": "سمكة", "image": "🐟" },
+      { "id": "b", "text": "ذئب", "image": "🐺" },
+      { "id": "c", "text": "بومة", "image": "🦉" },
+      { "id": "d", "text": "قرد", "image": "🐵" }
+    ],
+    "correct": "d"
+  },
+  {
+    "id": 14,
+    "question": "أي حيوان يصيح في الصباح؟",
+    "answers": [
+      { "id": "a", "text": "ديك", "image": "🐓" },
+      { "id": "b", "text": "حوت", "image": "🐋" },
+      { "id": "c", "text": "دب", "image": "🐻" },
+      { "id": "d", "text": "ثعلب", "image": "🦊" }
+    ],
+    "correct": "a"
+  },
+  {
+    "id": 15,
+    "question": "أي حيوان يعطينا البيض؟",
+    "answers": [
+      { "id": "a", "text": "بقرة", "image": "🐮" },
+      { "id": "b", "text": "دجاجة", "image": "🐔" },
+      { "id": "c", "text": "حصان", "image": "🐴" },
+      { "id": "d", "text": "كلب", "image": "🐶" }
+    ],
+    "correct": "b"
+  },
+  {
+    "id": 16,
+    "question": "أي حيوان يعطينا الصوف؟",
+    "answers": [
+      { "id": "a", "text": "أسد", "image": "🦁" },
+      { "id": "b", "text": "بطة", "image": "🦆" },
+      { "id": "c", "text": "خروف", "image": "🐑" },
+      { "id": "d", "text": "فيل", "image": "🐘" }
+    ],
+    "correct": "c"
+  },
+  {
+    "id": 17,
+    "question": "أي حيوان يقول كواك كواك؟",
+    "answers": [
+      { "id": "a", "text": "حصان", "image": "🐴" },
+      { "id": "b", "text": "قرد", "image": "🐵" },
+      { "id": "c", "text": "خروف", "image": "🐑" },
+      { "id": "d", "text": "بطة", "image": "🦆" }
+    ],
+    "correct": "d"
+  },
+  {
+    "id": 18,
+    "question": "أي حيوان صغير يصنع العسل؟",
+    "answers": [
+      { "id": "a", "text": "نحلة", "image": "🐝" },
+      { "id": "b", "text": "فراشة", "image": "🦋" },
+      { "id": "c", "text": "نملة", "image": "🐜" },
+      { "id": "d", "text": "دودة", "image": "🐛" }
+    ],
+    "correct": "a"
+  },
+  {
+    "id": 19,
+    "question": "ما هو أكبر حيوان في البحر؟",
+    "answers": [
+      { "id": "a", "text": "سمكة", "image": "🐟" },
+      { "id": "b", "text": "حوت", "image": "🐋" },
+      { "id": "c", "text": "دلفين", "image": "🐬" },
+      { "id": "d", "text": "أخطبوط", "image": "🐙" }
+    ],
+    "correct": "b"
+  },
+  {
+    "id": 20,
+    "question": "أي طائر لا يطير ويعيش في الثلج؟",
+    "answers": [
+      { "id": "a", "text": "نسر", "image": "🦅" },
+      { "id": "b", "text": "ببغاء", "image": "🦜" },
+      { "id": "c", "text": "بطريق", "image": "🐧" },
+      { "id": "d", "text": "بومة", "image": "🦉" }
+    ],
+    "correct": "c"
+  }
+]
