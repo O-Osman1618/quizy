@@ -215,6 +215,9 @@ def main() -> None:
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--list-voices", action="store_true")
     parser.add_argument("--samples", action="store_true")
+    parser.add_argument(
+        "--only", help="with --samples: comma-separated first names, e.g. Alice,Jessica"
+    )
     args = parser.parse_args()
 
     load_env()
@@ -231,8 +234,11 @@ def main() -> None:
         sample_text = categories[2]["questions"][0]["question"]
         sample_dir = ROOT / "tmp-voice-samples"
         sample_dir.mkdir(exist_ok=True)
+        wanted = {n.strip().lower() for n in args.only.split(",")} if args.only else None
         for v in eleven_voices():
             if v.get("category") not in (None, "premade"):
+                continue
+            if wanted and v["name"].split(" - ")[0].lower() not in wanted:
                 continue
             path = sample_dir / f"{v['name']}-{v['voice_id']}.mp3"
             path.write_bytes(eleven_mp3(sample_text, v["voice_id"]))
