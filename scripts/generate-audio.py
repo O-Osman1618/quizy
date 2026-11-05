@@ -6,7 +6,17 @@ Files are named <categoryId>-<questionId>.mp3 and played by lib/speech.ts.
 
 Providers
 ---------
-azure (default)  Azure Speech neural voice ar-SA-HamedNeural. Natural sounding,
+elevenlabs (default)
+                 ElevenLabs multilingual voice. Very natural and expressive.
+                 The free plan (10,000 credits/month, no card) is enough for the
+                 questions but is for NON-commercial use only, and the API on
+                 the free plan can only use the stock "premade" voices.
+                 Put your key in .env.local (git-ignored) at the project root:
+
+                     ELEVENLABS_API_KEY=<your key>
+                     ELEVENLABS_VOICE_ID=<voice id, see --list-voices>   # optional
+
+azure            Azure Speech neural voice ar-SA-HamedNeural. Natural sounding,
                  commercial use allowed, free tier of 500K characters/month.
                  Needs no Python packages. Put your credentials in .env.local
                  (git-ignored) at the project root:
@@ -19,10 +29,13 @@ say              The built-in macOS "Majed" voice (offline, robotic).
 
 Usage
 -----
-    python3 scripts/generate-audio.py                      # azure, only missing files
-    python3 scripts/generate-audio.py --force              # regenerate everything
-    python3 scripts/generate-audio.py --provider say       # offline fallback voice
-    python3 scripts/generate-audio.py --voice ar-SA-ZariyahNeural   # female voice
+    python3 scripts/generate-audio.py --list-voices         # voices your key can use
+    python3 scripts/generate-audio.py --samples             # one test clip per voice
+    python3 scripts/generate-audio.py                       # only missing files
+    python3 scripts/generate-audio.py --force               # regenerate everything
+    python3 scripts/generate-audio.py --voice <voice id>    # choose the voice
+    python3 scripts/generate-audio.py --provider azure      # Azure instead
+    python3 scripts/generate-audio.py --provider say        # offline fallback voice
 """
 
 import argparse
@@ -57,6 +70,65 @@ def load_env() -> None:
             continue
         key, value = line.split("=", 1)
         os.environ.setdefault(key.strip(), value.strip().strip("\"'"))
+
+
+# --- ElevenLabs --------------------------------------------------------------
+
+ELEVEN_BASE = "https://api.elevenlabs.io/v1"
+ELEVEN_MODEL = "eleven_multilingual_v2"  # supports Arabic
+# Slightly slower than normal speech so young children can follow (0.7 - 1.2).
+ELEVEN_SPEED = 0.9
+
+
+def eleven_key() -> str:
+    key = os.environ.get("ELEVENLABS_API_KEY")
+    if not key:
+        sys.exit(
+            "Missing ELEVENLABS_API_KEY. Add it to .env.local "
+            "(see the top of this file)."
+        )
+    return key
+
+
+def eleven_request(url: str, body: dict | None = None) -> bytes:
+    request = urllib.request.Request(
+        url,
+        data=json.dumps(body).encode("utf-8") if body is not None else None,
+        headers={
+            "xi-api-key": eleven_key(),
+            "Content-Type": "application/json",
+            "Accept": "audio/mpeg" if body is not None else "application/json",
+            # Some CDNs reject the default Python user agent.
+            "User-Agent": "quizy-audio-generator/1.0",
+        },
+        method="POST" if body is not None else "GET",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=120) as response:
+            return response.read()
+    except urllib.error.HTTPError as err:
+        detail = err.read().decode("utf-8", "replace")[:300]
+        sys.exit(f"ElevenLabs returned HTTP {err.code}: {detail}")
+
+
+def eleven_voices() -> list[dict]:
+    data = json.loads(eleven_request(f"{ELEVEN_BASE}/voices"))
+    return data.get("voices", [])
+
+
+def eleven_mp3(text: str, voice_id: str) -> bytes:
+    return eleven_request(
+        f"{ELEVEN_BASE}/text-to-speech/{voice_id}?output_format=mp3_44100_64",
+        {
+            "text": text,
+            "model_id": ELEVEN_MODEL,
+            "voice_settings": {
+                "stability": 0.6,
+                "similarity_boost": 0.8,
+                "speed": ELEVEN_SPEED,
+            },
+        },
+    )
 
 
 # --- Azure -----------------------------------------------------------------
@@ -136,14 +208,46 @@ def say_mp3(text: str) -> bytes:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[1])
-    parser.add_argument("--provider", choices=["azure", "say"], default="azure")
-    parser.add_argument("--voice", default="ar-SA-HamedNeural")
+    parser.add_argument(
+        "--provider", choices=["elevenlabs", "azure", "say"], default="elevenlabs"
+    )
+    parser.add_argument("--voice", help="voice id (ElevenLabs) or name (Azure)")
     parser.add_argument("--force", action="store_true")
+    parser.add_argument("--list-voices", action="store_true")
+    parser.add_argument("--samples", action="store_true")
     args = parser.parse_args()
 
     load_env()
-    OUT.mkdir(parents=True, exist_ok=True)
+
+    if args.list_voices:
+        for v in eleven_voices():
+            print(f"{v['voice_id']}  {v['name']}  [{v.get('category', '')}]")
+        return
+
     categories = json.loads(DATA.read_text(encoding="utf-8"))
+
+    if args.samples:
+        # One short clip per voice, so you can listen and pick the best one.
+        sample_text = categories[2]["questions"][0]["question"]
+        sample_dir = ROOT / "tmp-voice-samples"
+        sample_dir.mkdir(exist_ok=True)
+        for v in eleven_voices():
+            if v.get("category") not in (None, "premade"):
+                continue
+            path = sample_dir / f"{v['name']}-{v['voice_id']}.mp3"
+            path.write_bytes(eleven_mp3(sample_text, v["voice_id"]))
+            print(path.name)
+        print(f"samples saved in {sample_dir}")
+        return
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    voice = args.voice
+    if args.provider == "elevenlabs":
+        voice = voice or os.environ.get("ELEVENLABS_VOICE_ID")
+        if not voice:
+            sys.exit("Choose a voice: pass --voice <id> or set ELEVENLABS_VOICE_ID.")
+    elif args.provider == "azure":
+        voice = voice or "ar-SA-HamedNeural"
 
     made = skipped = 0
     for category in categories:
@@ -152,8 +256,10 @@ def main() -> None:
             if mp3_path.exists() and not args.force:
                 skipped += 1
                 continue
-            if args.provider == "azure":
-                audio = azure_mp3(q["question"], args.voice)
+            if args.provider == "elevenlabs":
+                audio = eleven_mp3(q["question"], voice)
+            elif args.provider == "azure":
+                audio = azure_mp3(q["question"], voice)
             else:
                 audio = say_mp3(q["question"])
             mp3_path.write_bytes(audio)
