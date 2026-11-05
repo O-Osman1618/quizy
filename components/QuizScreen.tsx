@@ -1,6 +1,7 @@
 import { Star } from "lucide-react";
 import type { Question } from "@/lib/quiz";
 import AnswerCard from "./AnswerCard";
+import SoundToggle from "./SoundToggle";
 
 type Props = {
   question: Question;
@@ -24,7 +25,8 @@ export default function QuizScreen({
 
   return (
     <section className="flex flex-1 flex-col gap-3 sm:gap-5 short:gap-2">
-      <header className="flex items-center gap-3">
+      <header className="flex items-center gap-2 sm:gap-3">
+        <SoundToggle />
         <span className="text-base font-bold whitespace-nowrap sm:text-xl">
           سؤال {index + 1} / {total}
         </span>

@@ -2,8 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { passMark, prepareRound, type Phase, type Question } from "@/lib/quiz";
+import {
+  playCelebrate,
+  playCorrect,
+  playTap,
+  playTryAgain,
+  playWrong,
+} from "@/lib/sounds";
 import CelebrationScreen from "./CelebrationScreen";
 import QuizScreen from "./QuizScreen";
+import SoundToggle from "./SoundToggle";
 import ResultScreen from "./ResultScreen";
 import StartScreen from "./StartScreen";
 
@@ -24,7 +32,13 @@ export default function QuizGame() {
 
     const timer = setTimeout(() => {
       if (index + 1 >= total) {
-        setPhase(score >= passMark(total) ? "celebration" : "result");
+        if (score >= passMark(total)) {
+          playCelebrate();
+          setPhase("celebration");
+        } else {
+          playTryAgain();
+          setPhase("result");
+        }
       } else {
         setIndex(index + 1);
         setSelected(null);
@@ -35,6 +49,7 @@ export default function QuizGame() {
   }, [selected, index, total, score]);
 
   function startGame() {
+    playTap();
     setQuestions(prepareRound());
     setIndex(0);
     setScore(0);
@@ -47,11 +62,19 @@ export default function QuizGame() {
     setSelected(answerId);
     if (answerId === questions[index].correct) {
       setScore((s) => s + 1);
+      playCorrect();
+    } else {
+      playWrong();
     }
   }
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 sm:pt-[max(2rem,env(safe-area-inset-top))] sm:pb-[max(2rem,env(safe-area-inset-bottom))] short:pt-[max(0.5rem,env(safe-area-inset-top))] short:pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+    <main className="relative mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 sm:pt-[max(2rem,env(safe-area-inset-top))] sm:pb-[max(2rem,env(safe-area-inset-bottom))] short:pt-[max(0.5rem,env(safe-area-inset-top))] short:pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+      {phase !== "playing" && (
+        <div className="absolute end-4 top-[max(1rem,env(safe-area-inset-top))] z-20 sm:end-6 short:top-2">
+          <SoundToggle />
+        </div>
+      )}
       {phase === "start" && <StartScreen onStart={startGame} />}
       {phase === "playing" && (
         <QuizScreen
