@@ -34,8 +34,8 @@ export type StoryPage = {
   text: string;
   /** narration file name inside stories/<id>/audio/ (Blob or public/) */
   audio: string;
-  /** illustration file name inside stories/<id>/images/ (Blob or public/) */
-  image: string;
+  /** illustration file name inside stories/<id>/images/ (Blob or public/); omit for text-only pages */
+  image?: string;
   /** optional short sound effect file name inside stories/<id>/audio/ */
   sfx?: string;
   scene: Scene;
