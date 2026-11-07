@@ -31,6 +31,7 @@ export default function StoryQuiz({ story, onDone }: Props) {
 
   // Read the first question when the quiz opens; stop audio when it closes.
   useEffect(() => {
+    if (story.quiz.length === 0) return;
     playNarration(
       assetUrl(story.id, "audio", story.quiz[0].audio),
       story.quiz[0].question,
@@ -60,11 +61,20 @@ export default function StoryQuiz({ story, onDone }: Props) {
     setSelected(answerId);
     if (answerId === questions[index].correct) {
       setScore((s) => s + 1);
+      const chosen = story.quiz[index].answers.find((a) => a.id === answerId);
+      if (chosen?.audio) {
+        playNarration(
+          assetUrl(story.id, "audio", chosen.audio),
+          chosen.text,
+        );
+      }
       playCorrect();
     } else {
       playWrong();
     }
   }
+
+  if (total === 0) return null;
 
   return (
     <QuizScreen

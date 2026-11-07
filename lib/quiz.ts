@@ -3,7 +3,10 @@ import categoriesData from "@/data/categories.json";
 export type Answer = {
   id: string;
   text: string;
-  image: string;
+  /** emoji fallback when no picture is set */
+  image?: string;
+  /** full URL to an answer picture (e.g. from Vercel Blob) */
+  imageSrc?: string;
 };
 
 export type Question = {

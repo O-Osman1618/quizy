@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { AudioLines, Check } from "lucide-react";
+import { shuffle } from "@/lib/quiz";
 import { playCorrect, playWrong } from "@/lib/sounds";
 import { assetUrl, type StoryAnswer, type StoryQuestion } from "@/lib/stories";
 import { playNarration, stopSpeech } from "@/lib/speech";
 
-const COLORS = [
-  "bg-sky-200 shadow-[0_8px_0_0_#7dd3fc]",
-  "bg-yellow-200 shadow-[0_8px_0_0_#fde047]",
-  "bg-emerald-200 shadow-[0_8px_0_0_#6ee7b7]",
-];
+function isImageFile(value: string | undefined): boolean {
+  if (!value) return false;
+  return /\.(png|jpe?g|webp|gif)$/i.test(value);
+}
 
 const CLOSE_DELAY_MS = 1800;
 
@@ -32,8 +33,13 @@ export default function StoryQuestionPopup({
 }: Props) {
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+  // Shuffle once when this pop-up mounts so each visit can show a new order.
+  const [answers] = useState(() => shuffle(question.answers));
   const wrongTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const onCorrectRef = useRef(onCorrect);
+  // When the child answers correctly, the parent starts the next page's
+  // narration before this pop-up unmounts — so cleanup must not stopSpeech.
+  const answeredCorrectRef = useRef(false);
 
   useEffect(() => {
     onCorrectRef.current = onCorrect;
@@ -52,8 +58,8 @@ export default function StoryQuestionPopup({
       question.question,
     );
     return () => {
-      stopSpeech();
       if (wrongTimer.current) clearTimeout(wrongTimer.current);
+      if (!answeredCorrectRef.current) stopSpeech();
     };
   }, [storyId, question]);
 
@@ -68,6 +74,7 @@ export default function StoryQuestionPopup({
     if (done) return;
     if (answer.id === question.correct) {
       stopSpeech();
+      answeredCorrectRef.current = true;
       if (answer.audio) {
         playNarration(assetUrl(storyId, "audio", answer.audio), answer.text);
       }
@@ -81,7 +88,7 @@ export default function StoryQuestionPopup({
     wrongTimer.current = setTimeout(() => setWrongId(null), 600);
   }
 
-  const answerCount = question.answers.length;
+  const answerCount = answers.length;
   const gridClass =
     answerCount <= 2
       ? "grid-cols-2"
@@ -111,18 +118,28 @@ export default function StoryQuestionPopup({
           </button>
         </div>
 
-        <div className={`grid ${gridClass} gap-3 pb-2 sm:gap-4`}>
-          {question.answers.map((answer, i) => {
+        <div className={`grid ${gridClass} items-center justify-items-center gap-4 pb-2 sm:gap-6`}>
+          {answers.map((answer) => {
             const isCorrect = done && answer.id === question.correct;
             const isWrong = wrongId === answer.id;
-            const state = isCorrect
-              ? "bg-green-400 shadow-[0_8px_0_0_#16a34a] animate-pop animate-pulse-ring z-10"
-              : isWrong
-                ? "bg-red-200 shadow-[0_8px_0_0_#fca5a5] animate-shake"
-                : `${COLORS[i % COLORS.length]} hover:scale-[1.04] active:translate-y-1 active:scale-95 ${
-                    done ? "opacity-50" : ""
-                  }`;
-            const textOnly = !answer.image;
+            const fileName =
+              answer.imageFile ||
+              (isImageFile(answer.image) ? answer.image : undefined);
+            const imageSrc = fileName
+              ? assetUrl(storyId, "images", fileName)
+              : undefined;
+            const emoji =
+              answer.image && !isImageFile(answer.image)
+                ? answer.image
+                : undefined;
+            let feedback = "hover:scale-110 active:scale-95";
+            if (isCorrect) {
+              feedback = "animate-pop animate-pulse-ring z-10 scale-110";
+            } else if (isWrong) {
+              feedback = "animate-shake opacity-60";
+            } else if (done) {
+              feedback = "opacity-40";
+            }
 
             return (
               <button
@@ -131,35 +148,44 @@ export default function StoryQuestionPopup({
                 disabled={done}
                 onClick={() => handleSelect(answer)}
                 aria-label={answer.text}
-                className={`relative flex h-[clamp(7.5rem,min(42vw,30dvh),14rem)] flex-col items-center justify-center gap-1 rounded-[2rem] p-2 transition-all duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] select-none ${state}`}
+                className={`relative flex flex-col items-center justify-center gap-2 bg-transparent p-1 transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] select-none ${feedback}`}
               >
-                {answer.image ? (
+                {imageSrc ? (
+                  <>
+                    <span className="relative h-[clamp(5rem,min(28vw,20dvh),9rem)] w-[clamp(5rem,min(28vw,20dvh),9rem)]">
+                      <Image
+                        src={imageSrc}
+                        alt=""
+                        fill
+                        sizes="160px"
+                        className="object-contain drop-shadow-md"
+                      />
+                    </span>
+                    <span className="text-[clamp(1.125rem,min(5vw,4dvh),1.75rem)] leading-tight font-extrabold text-ink">
+                      {answer.text}
+                    </span>
+                  </>
+                ) : emoji ? (
                   <>
                     <span
                       aria-hidden
-                      className="text-[clamp(3.5rem,min(20vw,15dvh),7rem)] leading-none"
+                      className="text-[clamp(3.5rem,min(20vw,15dvh),7rem)] leading-none drop-shadow-sm"
                     >
-                      {answer.image}
+                      {emoji}
                     </span>
-                    <span className="text-[clamp(1.25rem,min(5.5vw,4.5dvh),2rem)] leading-tight font-extrabold">
+                    <span className="text-[clamp(1.125rem,min(5vw,4dvh),1.75rem)] leading-tight font-extrabold text-ink">
                       {answer.text}
                     </span>
                   </>
                 ) : (
-                  <span
-                    className={`leading-none font-extrabold ${
-                      textOnly
-                        ? "text-[clamp(2.75rem,min(16vw,12dvh),5.5rem)]"
-                        : "text-[clamp(1.25rem,min(5.5vw,4.5dvh),2rem)]"
-                    }`}
-                  >
+                  <span className="text-[clamp(2.75rem,min(16vw,12dvh),5.5rem)] leading-none font-extrabold text-ink">
                     {answer.text}
                   </span>
                 )}
                 {isCorrect && (
                   <span
                     aria-hidden
-                    className="absolute end-2 top-2 grid size-9 place-items-center rounded-full bg-green-600 text-white"
+                    className="absolute -top-1 end-0 grid size-9 place-items-center rounded-full bg-green-600 text-white shadow"
                   >
                     <Check className="size-6" strokeWidth={4} />
                   </span>

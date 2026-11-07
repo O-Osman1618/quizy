@@ -102,6 +102,21 @@
             "👦",
             "👧"
           ]
+        },
+        "question": {
+          "question": "ما هو أول ركن من أركان الإسلام؟",
+          "audio": "question-popup-2.mp3",
+          "answers": [
+            { "id": "a", "text": "الصلاة", "imageFile": "quiz-2-b.png" },
+            {
+              "id": "b",
+              "text": "الشهادتان",
+              "imageFile": "quiz-2-a.png",
+              "audio": "answer-popup-2.mp3"
+            },
+            { "id": "c", "text": "الحج", "imageFile": "quiz-2-c.png" }
+          ],
+          "correct": "b"
         }
       },
       {
@@ -157,6 +172,21 @@
             "👦",
             "👧"
           ]
+        },
+        "question": {
+          "question": "ماذا تعني الزكاة؟",
+          "audio": "question-popup-3.mp3",
+          "answers": [
+            {
+              "id": "a",
+              "text": "مساعدة الفقراء",
+              "imageFile": "quiz-3-a.png",
+              "audio": "answer-popup-3.mp3"
+            },
+            { "id": "b", "text": "صوم رمضان", "imageFile": "quiz-6-a.png" },
+            { "id": "c", "text": "زيارة مكة", "imageFile": "quiz-5-a.png" }
+          ],
+          "correct": "a"
         }
       },
       {
@@ -213,6 +243,21 @@
             "👦",
             "👧"
           ]
+        },
+        "question": {
+          "question": "أين توجد الكعبة المشرفة؟",
+          "audio": "question-popup-4.mp3",
+          "answers": [
+            { "id": "a", "text": "المدينة", "imageFile": "madinah.png" },
+            {
+              "id": "b",
+              "text": "مكة المكرمة",
+              "imageFile": "makkah.png",
+              "audio": "answer-popup-4.mp3"
+            },
+            { "id": "c", "text": "القدس", "imageFile": "alquds.png" }
+          ],
+          "correct": "b"
         }
       },
       {
@@ -255,6 +300,172 @@
         }
       }
     ],
-    "quiz": []
+    "quiz": [
+      {
+        "question": "كم عدد أركان الإسلام؟",
+        "audio": "quiz-1.mp3",
+        "answers": [
+          { "id": "a", "text": "4", "image": "4️⃣", "imageFile": "quiz-1-a.png" },
+          {
+            "id": "b",
+            "text": "5",
+            "image": "5️⃣",
+            "imageFile": "quiz-1-b.png",
+            "audio": "quiz-1-correct.mp3"
+          },
+          { "id": "c", "text": "6", "image": "6️⃣", "imageFile": "quiz-1-c.png" }
+        ],
+        "correct": "b"
+      },
+      {
+        "question": "ما هو الركن الأول؟",
+        "audio": "quiz-2.mp3",
+        "answers": [
+          {
+            "id": "a",
+            "text": "الشهادتان",
+            "image": "☝️",
+            "imageFile": "quiz-2-a.png",
+            "audio": "quiz-2-correct.mp3"
+          },
+          { "id": "b", "text": "الصلاة", "image": "🕌", "imageFile": "quiz-2-b.png" },
+          { "id": "c", "text": "الحج", "image": "🕋", "imageFile": "quiz-2-c.png" }
+        ],
+        "correct": "a"
+      },
+      {
+        "question": "ماذا تعني الزكاة؟",
+        "audio": "quiz-3.mp3",
+        "answers": [
+          {
+            "id": "a",
+            "text": "مساعدة الفقراء",
+            "image": "💛",
+            "imageFile": "quiz-3-a.png",
+            "audio": "answer-popup-3.mp3"
+          },
+          {
+            "id": "b",
+            "text": "مساعدة الأغنياء",
+            "image": "💰",
+            "imageFile": "quiz-3-b.png"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "question": "كم صلاة نصلي في اليوم؟",
+        "audio": "quiz-4.mp3",
+        "answers": [
+          { "id": "a", "text": "3" },
+          { "id": "b", "text": "5", "audio": "quiz-4-correct.mp3" },
+          { "id": "c", "text": "7" }
+        ],
+        "correct": "b"
+      },
+      {
+        "question": "ما هو الحج؟",
+        "audio": "quiz-5.mp3",
+        "answers": [
+          {
+            "id": "a",
+            "text": "الذهاب إلى الكعبة",
+            "image": "🕋",
+            "imageFile": "quiz-5-a.png",
+            "audio": "quiz-5-correct.mp3"
+          },
+          {
+            "id": "b",
+            "text": "الذهاب إلى المدرسة",
+            "image": "🏫",
+            "imageFile": "quiz-5-b.png"
+          },
+          {
+            "id": "c",
+            "text": "الذهاب إلى السوق",
+            "image": "🛒",
+            "imageFile": "quiz-5-c.png"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "question": "ما هو الركن الرابع؟",
+        "audio": "quiz-6.mp3",
+        "answers": [
+          {
+            "id": "a",
+            "text": "صوم رمضان",
+            "image": "🌙",
+            "imageFile": "quiz-6-a.png",
+            "audio": "quiz-6-correct.mp3"
+          },
+          {
+            "id": "b",
+            "text": "اللعب في الحديقة",
+            "image": "🌳",
+            "imageFile": "quiz-6-b.png"
+          },
+          {
+            "id": "c",
+            "text": "قراءة القرآن",
+            "image": "📖",
+            "imageFile": "quiz-6-c.png"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "question": "متى يبدأ الصوم؟",
+        "audio": "quiz-7.mp3",
+        "answers": [
+          {
+            "id": "a",
+            "text": "في الفجر",
+            "image": "🌅",
+            "imageFile": "quiz-7-a.png",
+            "audio": "quiz-7-correct.mp3"
+          },
+          { "id": "b", "text": "في الظهر", "image": "☀️", "imageFile": "quiz-7-b.png" },
+          { "id": "c", "text": "في الليل", "image": "🌃", "imageFile": "quiz-7-c.png" }
+        ],
+        "correct": "a"
+      },
+      {
+        "question": "ماذا يلبس الرجال في الحج؟",
+        "audio": "quiz-8.mp3",
+        "answers": [
+          {
+            "id": "a",
+            "text": "الإحرام",
+            "image": "🤍",
+            "imageFile": "quiz-8-a.png",
+            "audio": "quiz-8-correct.mp3"
+          },
+          {
+            "id": "b",
+            "text": "ملابس عادية",
+            "image": "👕",
+            "imageFile": "quiz-8-b.png"
+          }
+        ],
+        "correct": "a"
+      },
+      {
+        "question": "ماذا يلبس النساء في الحج؟",
+        "audio": "quiz-9.mp3",
+        "answers": [
+          { "id": "a", "text": "ملابس عادية", "image": "👕", "imageFile": "quiz-9-a.png" },
+          {
+            "id": "b",
+            "text": "العباية",
+            "image": "🧕",
+            "imageFile": "quiz-9-b.png",
+            "audio": "quiz-9-correct.mp3"
+          }
+        ],
+        "correct": "b"
+      }
+    ]
   }
 ]

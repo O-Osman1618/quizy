@@ -69,6 +69,11 @@ for (const story of stories) {
           answer.audio,
           `إجابة ${answer.id} لسؤال صفحة ${page.id}`,
         );
+        add(
+          "images",
+          answer.imageFile,
+          `صورة إجابة ${answer.id} لسؤال صفحة ${page.id}`,
+        );
       }
     }
   }
@@ -76,6 +81,11 @@ for (const story of stories) {
     add("audio", q.audio, `سؤال الاختبار ${i + 1}`);
     for (const answer of q.answers ?? []) {
       add("audio", answer.audio, `إجابة ${answer.id} للاختبار ${i + 1}`);
+      add(
+        "images",
+        answer.imageFile,
+        `صورة إجابة ${answer.id} للاختبار ${i + 1}`,
+      );
     }
   });
 
