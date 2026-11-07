@@ -22,10 +22,15 @@ export type Category = {
 
 export type Phase =
   | "start"
+  | "modes"
   | "categories"
   | "playing"
   | "celebration"
-  | "result";
+  | "result"
+  | "stories"
+  | "story"
+  | "storyQuiz"
+  | "storyEnd";
 
 export const PASS_RATIO = 0.75;
 

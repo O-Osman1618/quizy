@@ -8,6 +8,12 @@ type Props = {
   total: number;
   onPlayAgain: () => void;
   onChooseCategory: () => void;
+  /** replaces the default heading */
+  heading?: string;
+  /** show a row of stars instead of the score sentence */
+  showStars?: boolean;
+  playAgainLabel?: string;
+  chooseLabel?: string;
 };
 
 const CONFETTI_COLORS = [
@@ -55,6 +61,10 @@ export default function CelebrationScreen({
   total,
   onPlayAgain,
   onChooseCategory,
+  heading = "أحسنت يا بطل! 🎉",
+  showStars = false,
+  playAgainLabel,
+  chooseLabel,
 }: Props) {
   // This screen only mounts after user interaction (never during SSR),
   // so random values in the initializer cannot cause a hydration mismatch.
@@ -101,14 +111,38 @@ export default function CelebrationScreen({
         strokeWidth={1.5}
       />
       <h1 className="animate-rise text-[clamp(1.75rem,min(10vw,9dvh),4.5rem)] leading-tight font-extrabold">
-        أحسنت يا بطل! 🎉
+        {heading}
       </h1>
-      <p className="text-[clamp(1.25rem,5vw,2rem)] font-bold">
-        أجبت على {score} من {total} {questionsWord(total)} بشكل صحيح
-      </p>
+      {showStars ? (
+        <div
+          className="flex items-center justify-center gap-2"
+          role="img"
+          aria-label={`${score} من ${total} نجوم`}
+        >
+          {Array.from({ length: total }, (_, i) => (
+            <Star
+              key={i}
+              aria-hidden
+              className={`size-[clamp(2.5rem,min(14vw,10dvh),4.5rem)] ${
+                i < score
+                  ? "animate-pop fill-pop-yellow text-amber-500"
+                  : "fill-white/70 text-slate-300"
+              }`}
+              style={{ animationDelay: `${i * 0.25}s` }}
+              strokeWidth={1.5}
+            />
+          ))}
+        </div>
+      ) : (
+        <p className="text-[clamp(1.25rem,5vw,2rem)] font-bold">
+          أجبت على {score} من {total} {questionsWord(total)} بشكل صحيح
+        </p>
+      )}
       <EndActions
         onPlayAgain={onPlayAgain}
         onChooseCategory={onChooseCategory}
+        playAgainLabel={playAgainLabel}
+        chooseLabel={chooseLabel}
       />
     </section>
   );

@@ -1,0 +1,161 @@
+[
+  {
+    "id": "khalil-and-mimi",
+    "title": "خليل والقطة الصغيرة",
+    "cover": "cover.jpg",
+    "coverScene": {
+      "from": "#bae6fd",
+      "to": "#bbf7d0",
+      "decor": ["☀️", "🌷"],
+      "characters": ["👦", "🐱"]
+    },
+    "pages": [
+      {
+        "id": 1,
+        "text": "في صباح جميل، خرج خليل إلى الحديقة.",
+        "audio": "page-1.mp3",
+        "image": "page-1.jpg",
+        "scene": {
+          "from": "#bae6fd",
+          "to": "#bbf7d0",
+          "decor": ["☀️", "🌳", "🌷"],
+          "characters": ["👦"]
+        }
+      },
+      {
+        "id": 2,
+        "text": "فجأة، سمع خليل صوتًا: مياو، مياو!",
+        "audio": "page-2.mp3",
+        "image": "page-2.jpg",
+        "sfx": "sfx-meow.mp3",
+        "scene": {
+          "from": "#bae6fd",
+          "to": "#bbf7d0",
+          "decor": ["🌳", "🐾", "🌷"],
+          "characters": ["👦"]
+        },
+        "question": {
+          "question": "من الذي يقول مياو؟",
+          "audio": "q-1.mp3",
+          "answers": [
+            { "id": "a", "text": "قطة", "image": "🐱" },
+            { "id": "b", "text": "كلب", "image": "🐶" }
+          ],
+          "correct": "a"
+        }
+      },
+      {
+        "id": 3,
+        "text": "وجد خليل قطة صغيرة خلف الشجرة. اسمها ميمي، وهي حزينة لأنها تاهت.",
+        "audio": "page-3.mp3",
+        "image": "page-3.jpg",
+        "scene": {
+          "from": "#bbf7d0",
+          "to": "#86efac",
+          "decor": ["🌳", "🍃"],
+          "characters": ["👦", "🐱"]
+        }
+      },
+      {
+        "id": 4,
+        "text": "طار عصفور أحمر فوق رأسيهما وقال: تعالا، سأريكما الطريق!",
+        "audio": "page-4.mp3",
+        "image": "page-4.jpg",
+        "sfx": "sfx-bird.mp3",
+        "scene": {
+          "from": "#bae6fd",
+          "to": "#fde68a",
+          "decor": ["☁️", "🐦", "☁️"],
+          "characters": ["👦", "🐱"]
+        },
+        "question": {
+          "question": "ما لون العصفور؟",
+          "audio": "q-2.mp3",
+          "answers": [
+            { "id": "a", "text": "أحمر", "image": "🔴" },
+            { "id": "b", "text": "أزرق", "image": "🔵" }
+          ],
+          "correct": "a"
+        }
+      },
+      {
+        "id": 5,
+        "text": "ثم قابلا كلبًا بنيًّا كبيرًا. كان لطيفًا، وساعدهما في البحث.",
+        "audio": "page-5.mp3",
+        "image": "page-5.jpg",
+        "scene": {
+          "from": "#fde68a",
+          "to": "#fed7aa",
+          "decor": ["🌳", "🌼"],
+          "characters": ["👦", "🐱", "🐕"]
+        }
+      },
+      {
+        "id": 6,
+        "text": "مشوا معًا حتى وصلوا إلى بيت له باب أزرق.",
+        "audio": "page-6.mp3",
+        "image": "page-6.jpg",
+        "sfx": "sfx-knock.mp3",
+        "scene": {
+          "from": "#fbcfe8",
+          "to": "#bae6fd",
+          "decor": ["🏠", "🌷"],
+          "characters": ["👦", "🐱", "🐕"]
+        }
+      },
+      {
+        "id": 7,
+        "text": "فتحت أم ميمي الباب، وعانقت صغيرتها بفرح.",
+        "audio": "page-7.mp3",
+        "image": "page-7.jpg",
+        "scene": {
+          "from": "#fbcfe8",
+          "to": "#fde68a",
+          "decor": ["❤️", "🏠", "❤️"],
+          "characters": ["🐈", "🐱"]
+        }
+      },
+      {
+        "id": 8,
+        "text": "عاد خليل إلى بيته سعيدًا. النهاية.",
+        "audio": "page-8.mp3",
+        "image": "page-8.jpg",
+        "scene": {
+          "from": "#fed7aa",
+          "to": "#fbcfe8",
+          "decor": ["🌅", "⭐"],
+          "characters": ["👦"]
+        }
+      }
+    ],
+    "quiz": [
+      {
+        "question": "من الذي وجده خليل في الحديقة؟",
+        "audio": "quiz-1.mp3",
+        "answers": [
+          { "id": "a", "text": "قطة", "image": "🐱" },
+          { "id": "b", "text": "أرنب", "image": "🐰" }
+        ],
+        "correct": "a"
+      },
+      {
+        "question": "ما لون الباب؟",
+        "audio": "quiz-2.mp3",
+        "answers": [
+          { "id": "a", "text": "أحمر", "image": "🔴" },
+          { "id": "b", "text": "أزرق", "image": "🔵" }
+        ],
+        "correct": "b"
+      },
+      {
+        "question": "ما لون الكلب؟",
+        "audio": "quiz-3.mp3",
+        "answers": [
+          { "id": "a", "text": "بني", "image": "🟤" },
+          { "id": "b", "text": "أبيض", "image": "⚪" }
+        ],
+        "correct": "a"
+      }
+    ]
+  }
+]

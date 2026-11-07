@@ -18,7 +18,7 @@ export default function CategoryScreen({ categories, onSelect }: Props) {
 
   return (
     <section className="flex flex-1 flex-col gap-3 sm:gap-5 short:gap-2">
-      <h1 className="animate-rise py-1 pe-14 text-center text-[clamp(1.75rem,min(8vw,7dvh),3rem)] leading-snug font-extrabold short:pe-0">
+      <h1 className="animate-rise px-14 py-1 text-center text-[clamp(1.75rem,min(8vw,7dvh),3rem)] leading-snug font-extrabold">
         اختر موضوعاً
       </h1>
 

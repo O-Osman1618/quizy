@@ -69,7 +69,13 @@ export default function QuizScreen({
         </button>
       </div>
 
-      <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-3 pb-2 sm:gap-6 short:grid-cols-4 short:grid-rows-1 short:gap-3">
+      <div
+        className={`grid min-h-0 flex-1 gap-3 pb-2 sm:gap-6 short:gap-3 ${
+          question.answers.length <= 2
+            ? "grid-cols-1 grid-rows-2 short:grid-cols-2 short:grid-rows-1"
+            : "grid-cols-2 grid-rows-2 short:grid-cols-4 short:grid-rows-1"
+        }`}
+      >
         {question.answers.map((answer, i) => (
           <AnswerCard
             key={answer.id}
