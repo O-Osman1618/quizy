@@ -23,4 +23,20 @@ node scripts/upload-media.mjs
 node scripts/upload-media.mjs --force
 ```
 
-3. After a successful upload you can delete the local copies; the app loads media via `NEXT_PUBLIC_MEDIA_BASE_URL`.
+3. Check which story assets exist locally or on Blob:
+
+```bash
+node scripts/check-story-assets.mjs
+```
+
+4. After a successful upload you can delete the local copies; the app loads media via `NEXT_PUBLIC_MEDIA_BASE_URL`.
+
+## Story dialogue vs pages
+
+`data/arkan-al-islam-dialogue.json` is the TTS source script used to generate each page’s stitched MP3. Runtime story text and media filenames live in `data/stories.json`.
+
+## Answer fields (`stories.json`)
+
+- `imageFile` — picture under `stories/<id>/images/` (Blob or `public/`). Prefer this when a real image exists.
+- `image` — emoji / text-only fallback when there is **no** `imageFile` (e.g. number answers).
+- `audio` on a correct answer — played after a right tap; the quiz waits for it to finish before advancing. Clips may be reused across questions (e.g. `answer-popup-3.mp3` on quiz-3).

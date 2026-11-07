@@ -19,12 +19,7 @@ export default function StoryIllustration({ src, scene }: Props) {
 
   if (!failed) {
     return (
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(180deg, ${scene.from}, ${scene.to})`,
-        }}
-      >
+      <div className="absolute inset-0">
         <Image
           src={src}
           alt=""
@@ -41,7 +36,7 @@ export default function StoryIllustration({ src, scene }: Props) {
   return <ScenePlaceholder scene={scene} />;
 }
 
-export function ScenePlaceholder({ scene }: { scene: Scene }) {
+function ScenePlaceholder({ scene }: { scene: Scene }) {
   return (
     <div
       aria-hidden

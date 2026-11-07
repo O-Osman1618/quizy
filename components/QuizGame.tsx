@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import {
   categories,
   passMark,
@@ -18,6 +18,7 @@ import {
 } from "@/lib/sounds";
 import { speakQuestion, stopSpeech, unlockAudio } from "@/lib/speech";
 import { stories, type Story } from "@/lib/stories";
+import { useAutoAdvanceOnSelect } from "@/lib/useAutoAdvanceOnSelect";
 import BackButton from "./BackButton";
 import CategoryScreen from "./CategoryScreen";
 import CelebrationScreen from "./CelebrationScreen";
@@ -29,9 +30,6 @@ import StoryReader from "./StoryReader";
 import SoundToggle from "./SoundToggle";
 import ResultScreen from "./ResultScreen";
 import StartScreen from "./StartScreen";
-
-// Long enough for a young child to see which answer was right before moving on.
-const NEXT_QUESTION_DELAY_MS = 2800;
 
 export default function QuizGame() {
   const [phase, setPhase] = useState<Phase>("start");
@@ -45,28 +43,23 @@ export default function QuizGame() {
 
   const total = questions.length;
 
-  // After an answer is picked, wait briefly then move on automatically.
-  useEffect(() => {
-    if (selected === null) return;
-
-    const timer = setTimeout(() => {
-      if (index + 1 >= total) {
-        if (score >= passMark(total)) {
-          playCelebrate();
-          setPhase("celebration");
-        } else {
-          playTryAgain();
-          setPhase("result");
-        }
+  const advanceCategoryQuiz = useCallback(() => {
+    if (index + 1 >= total) {
+      if (score >= passMark(total)) {
+        playCelebrate();
+        setPhase("celebration");
       } else {
-        setIndex(index + 1);
-        setSelected(null);
-        if (category) speakQuestion(category.id, questions[index + 1]);
+        playTryAgain();
+        setPhase("result");
       }
-    }, NEXT_QUESTION_DELAY_MS);
+      return;
+    }
+    setIndex(index + 1);
+    setSelected(null);
+    if (category) speakQuestion(category.id, questions[index + 1]);
+  }, [index, total, score, category, questions]);
 
-    return () => clearTimeout(timer);
-  }, [selected, index, total, score, category, questions]);
+  useAutoAdvanceOnSelect(selected, advanceCategoryQuiz);
 
   function showModes() {
     stopSpeech();

@@ -9,11 +9,10 @@
  * Needs BLOB_READ_WRITE_TOKEN in .env.local (or the environment).
  */
 import { head, put } from "@vercel/blob";
-import { createReadStream, existsSync, readFileSync, readdirSync, statSync } from "node:fs";
-import { dirname, extname, join, relative } from "node:path";
-import { fileURLToPath } from "node:url";
+import { createReadStream, existsSync, readdirSync, statSync } from "node:fs";
+import { extname, join, relative } from "node:path";
+import { loadEnv, root } from "./load-env.mjs";
 
-const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const force = process.argv.includes("--force");
 
 const CONTENT_TYPES = {
@@ -25,20 +24,6 @@ const CONTENT_TYPES = {
   ".mp3": "audio/mpeg",
   ".wav": "audio/wav",
 };
-
-function loadEnv() {
-  const envFile = join(root, ".env.local");
-  if (!existsSync(envFile)) return;
-  for (const line of readFileSync(envFile, "utf8").split("\n")) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith("#") || !trimmed.includes("=")) continue;
-    const eq = trimmed.indexOf("=");
-    const key = trimmed.slice(0, eq).trim();
-    let value = trimmed.slice(eq + 1).trim().replace(/^["']|["']$/g, "");
-    // Always prefer .env.local over a polluted shell env (e.g. quoted tokens).
-    process.env[key] = value;
-  }
-}
 
 function walkFiles(dir, out = []) {
   if (!existsSync(dir)) return out;
