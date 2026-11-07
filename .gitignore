@@ -24,6 +24,11 @@
 .DS_Store
 *.pem
 
+# Media is served from Vercel Blob (see scripts/upload-media.mjs).
+# Keep local copies only as a staging area before upload.
+/public/stories/
+/public/audio/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -40,6 +45,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 tmp-voice-samples/
+tmp-story-audio-cache/
+.venv-audio/
 
 # private production notes (not committed)
 *.local.md

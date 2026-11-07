@@ -13,26 +13,53 @@ export default function StoryListScreen({ stories, onSelect }: Props) {
         اختر قصة
       </h1>
 
-      <div className="grid min-h-0 flex-1 auto-rows-fr grid-cols-1 gap-4 pb-2 sm:grid-cols-2 sm:gap-6 short:grid-flow-col short:grid-cols-none short:auto-cols-fr">
-        {stories.map((story) => (
-          <button
-            key={story.id}
-            type="button"
-            onClick={() => onSelect(story)}
-            className="flex min-h-0 flex-col gap-2 rounded-[2rem] bg-white/80 p-2 shadow-[0_8px_0_0_#f9a8d4] transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] select-none hover:scale-[1.02] active:translate-y-1 active:scale-95 sm:p-3"
-          >
-            <span className="relative min-h-[30dvh] flex-1 overflow-hidden rounded-[1.5rem]">
-              <StoryIllustration
-                key={story.id}
-                src={assetUrl(story.id, "images", story.cover)}
-                scene={story.coverScene}
-              />
-            </span>
-            <span className="px-2 pb-1 text-center text-[clamp(1.375rem,min(6.5vw,5dvh),2.25rem)] leading-snug font-extrabold">
-              {story.title}
-            </span>
-          </button>
-        ))}
+      <div className="relative flex min-h-0 flex-1 flex-col justify-center">
+        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-6 pt-2 sm:justify-center sm:gap-8 sm:px-6 short:gap-4 short:pb-3">
+          {stories.map((story) => (
+            <button
+              key={story.id}
+              type="button"
+              onClick={() => onSelect(story)}
+              className="group relative flex w-[min(52vw,14rem)] shrink-0 snap-center flex-col items-center gap-3 transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] select-none hover:-translate-y-1 hover:scale-[1.03] active:translate-y-1 active:scale-95 sm:w-[min(40vw,16rem)] short:w-[min(36vw,11rem)] short:gap-2"
+            >
+              {/* Book body: cover + spine thickness on the logical start edge */}
+              <span className="relative aspect-[3/4] w-full">
+                <span
+                  aria-hidden
+                  className="absolute inset-y-[3%] start-0 z-0 w-[0.55rem] -translate-x-px rounded-s-md bg-gradient-to-b from-[#c4b5fd] to-[#7c5fe0] shadow-[2px_0_0_0_rgba(43,45,91,0.12)] rtl:translate-x-px"
+                />
+                <span className="relative z-10 block h-full overflow-hidden rounded-[1rem] rounded-s-[0.35rem] bg-white shadow-[0_10px_0_0_#f9a8d4,4px_6px_18px_rgba(43,45,91,0.18)] ring-1 ring-ink/10">
+                  <span className="absolute inset-0">
+                    <StoryIllustration
+                      key={story.id}
+                      src={assetUrl(story.id, "images", story.cover)}
+                      scene={story.coverScene}
+                    />
+                  </span>
+                  {/* Soft page-edge highlight on the open side */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-y-0 end-0 w-3 bg-gradient-to-l from-white/50 to-transparent"
+                  />
+                </span>
+              </span>
+
+              <span className="px-1 text-center text-[clamp(1.125rem,min(5.5vw,4.5dvh),1.75rem)] leading-snug font-extrabold">
+                {story.title}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Shelf ledge */}
+        <div
+          aria-hidden
+          className="mx-2 h-3 rounded-full bg-gradient-to-b from-[#fcd34d] to-[#f59e0b] shadow-[0_6px_0_0_#d97706] sm:mx-6 short:h-2"
+        />
+        <div
+          aria-hidden
+          className="mx-6 -mt-0.5 h-2 rounded-b-2xl bg-[#b45309]/35 sm:mx-10"
+        />
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import storiesData from "@/data/stories.json";
+import { mediaUrl } from "@/lib/media";
 import type { Question } from "@/lib/quiz";
 
 /** Placeholder artwork shown until a real illustration exists. */
@@ -12,13 +13,15 @@ export type Scene = {
 export type StoryAnswer = {
   id: string;
   text: string;
-  /** an emoji */
-  image: string;
+  /** optional emoji; omit for text-only choices */
+  image?: string;
+  /** optional narration when this answer is chosen correctly */
+  audio?: string;
 };
 
 export type StoryQuestion = {
   question: string;
-  /** file name inside public/stories/<id>/audio/ */
+  /** file name inside stories/<id>/audio/ (Blob or public/) */
   audio: string;
   answers: StoryAnswer[];
   correct: string;
@@ -55,7 +58,7 @@ export function assetUrl(
   kind: "images" | "audio",
   file: string,
 ): string {
-  return `/stories/${storyId}/${kind}/${file}`;
+  return mediaUrl(`/stories/${storyId}/${kind}/${file}`);
 }
 
 /** The end-of-story quiz in the same shape the main quiz screen uses. */
@@ -63,7 +66,11 @@ export function quizAsQuestions(story: Story): Question[] {
   return story.quiz.map((q, i) => ({
     id: i + 1,
     question: q.question,
-    answers: q.answers,
+    answers: q.answers.map((a) => ({
+      id: a.id,
+      text: a.text,
+      image: a.image ?? "",
+    })),
     correct: q.correct,
   }));
 }

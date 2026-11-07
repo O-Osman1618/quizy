@@ -1,10 +1,11 @@
+import { mediaUrl } from "@/lib/media";
 import { getMuted } from "@/lib/sounds";
 import type { Question } from "@/lib/quiz";
 
 /**
- * Reads text aloud using a pre-generated MP3 (questions: /public/audio, stories:
- * /public/stories/<id>/audio). If the file is missing or fails to load, falls
- * back to the browser's built-in Arabic voice.
+ * Reads text aloud using a pre-generated MP3 (questions: /audio on Blob or
+ * public/, stories: /stories/<id>/audio). If the file is missing or fails to
+ * load, falls back to the browser's built-in Arabic voice.
  *
  * A single shared <audio> element is reused on purpose: once it has been
  * played from a tap, iOS Safari lets later clips play without another tap.
@@ -99,5 +100,8 @@ export function playSfx(src: string) {
 }
 
 export function speakQuestion(categoryId: string, question: Question) {
-  playNarration(`/audio/${categoryId}-${question.id}.mp3`, question.question);
+  playNarration(
+    mediaUrl(`/audio/${categoryId}-${question.id}.mp3`),
+    question.question,
+  );
 }

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AudioLines, Check } from "lucide-react";
 import { playCorrect, playWrong } from "@/lib/sounds";
-import { assetUrl, type StoryQuestion } from "@/lib/stories";
+import { assetUrl, type StoryAnswer, type StoryQuestion } from "@/lib/stories";
 import { playNarration, stopSpeech } from "@/lib/speech";
 
 const COLORS = [
@@ -64,19 +64,30 @@ export default function StoryQuestionPopup({
     return () => clearTimeout(timer);
   }, [done]);
 
-  function handleSelect(id: string) {
+  function handleSelect(answer: StoryAnswer) {
     if (done) return;
-    if (id === question.correct) {
+    if (answer.id === question.correct) {
       stopSpeech();
+      if (answer.audio) {
+        playNarration(assetUrl(storyId, "audio", answer.audio), answer.text);
+      }
       playCorrect();
       setDone(true);
       return;
     }
     playWrong();
-    setWrongId(id);
+    setWrongId(answer.id);
     if (wrongTimer.current) clearTimeout(wrongTimer.current);
     wrongTimer.current = setTimeout(() => setWrongId(null), 600);
   }
+
+  const answerCount = question.answers.length;
+  const gridClass =
+    answerCount <= 2
+      ? "grid-cols-2"
+      : answerCount === 3
+        ? "grid-cols-3"
+        : "grid-cols-2";
 
   return (
     <div
@@ -85,7 +96,7 @@ export default function StoryQuestionPopup({
       aria-label={question.question}
       className="fixed inset-0 z-30 grid animate-backdrop place-items-center overflow-y-auto bg-ink/40 p-4"
     >
-      <div className="flex w-full max-w-md animate-rise flex-col gap-4 rounded-[2rem] bg-white p-4 shadow-xl sm:p-6 short:gap-2 short:p-3">
+      <div className="flex w-full max-w-lg animate-rise flex-col gap-4 rounded-[2rem] bg-white p-4 shadow-xl sm:p-6 short:gap-2 short:p-3">
         <div className="flex items-center justify-center gap-3">
           <h2 className="text-center text-[clamp(1.5rem,min(7vw,5.5dvh),2.5rem)] leading-snug font-extrabold">
             {question.question}
@@ -100,7 +111,7 @@ export default function StoryQuestionPopup({
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 pb-2 sm:gap-5">
+        <div className={`grid ${gridClass} gap-3 pb-2 sm:gap-4`}>
           {question.answers.map((answer, i) => {
             const isCorrect = done && answer.id === question.correct;
             const isWrong = wrongId === answer.id;
@@ -111,25 +122,40 @@ export default function StoryQuestionPopup({
                 : `${COLORS[i % COLORS.length]} hover:scale-[1.04] active:translate-y-1 active:scale-95 ${
                     done ? "opacity-50" : ""
                   }`;
+            const textOnly = !answer.image;
 
             return (
               <button
                 key={answer.id}
                 type="button"
                 disabled={done}
-                onClick={() => handleSelect(answer.id)}
+                onClick={() => handleSelect(answer)}
                 aria-label={answer.text}
-                className={`relative flex h-[clamp(8rem,min(46vw,34dvh),15rem)] flex-col items-center justify-center gap-1 rounded-[2rem] p-2 transition-all duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] select-none ${state}`}
+                className={`relative flex h-[clamp(7.5rem,min(42vw,30dvh),14rem)] flex-col items-center justify-center gap-1 rounded-[2rem] p-2 transition-all duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] select-none ${state}`}
               >
-                <span
-                  aria-hidden
-                  className="text-[clamp(3.5rem,min(20vw,15dvh),7rem)] leading-none"
-                >
-                  {answer.image}
-                </span>
-                <span className="text-[clamp(1.25rem,min(5.5vw,4.5dvh),2rem)] leading-tight font-extrabold">
-                  {answer.text}
-                </span>
+                {answer.image ? (
+                  <>
+                    <span
+                      aria-hidden
+                      className="text-[clamp(3.5rem,min(20vw,15dvh),7rem)] leading-none"
+                    >
+                      {answer.image}
+                    </span>
+                    <span className="text-[clamp(1.25rem,min(5.5vw,4.5dvh),2rem)] leading-tight font-extrabold">
+                      {answer.text}
+                    </span>
+                  </>
+                ) : (
+                  <span
+                    className={`leading-none font-extrabold ${
+                      textOnly
+                        ? "text-[clamp(2.75rem,min(16vw,12dvh),5.5rem)]"
+                        : "text-[clamp(1.25rem,min(5.5vw,4.5dvh),2rem)]"
+                    }`}
+                  >
+                    {answer.text}
+                  </span>
+                )}
                 {isCorrect && (
                   <span
                     aria-hidden

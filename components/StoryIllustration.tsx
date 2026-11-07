@@ -19,15 +19,22 @@ export default function StoryIllustration({ src, scene }: Props) {
 
   if (!failed) {
     return (
-      <Image
-        src={src}
-        alt=""
-        fill
-        priority
-        sizes="(max-width: 700px) 100vw, 700px"
-        className="object-cover"
-        onError={() => setFailed(true)}
-      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(180deg, ${scene.from}, ${scene.to})`,
+        }}
+      >
+        <Image
+          src={src}
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 700px) 100vw, 700px"
+          className="object-contain"
+          onError={() => setFailed(true)}
+        />
+      </div>
     );
   }
 
@@ -63,7 +70,10 @@ export function ScenePlaceholder({ scene }: { scene: Scene }) {
           <span
             key={i}
             className="text-[min(38cqw,44cqh)] leading-none drop-shadow-md"
-            style={{ fontSize: scene.characters.length > 2 ? "min(30cqw,36cqh)" : undefined }}
+            style={{
+              fontSize:
+                scene.characters.length > 2 ? "min(30cqw,36cqh)" : undefined,
+            }}
           >
             {emoji}
           </span>

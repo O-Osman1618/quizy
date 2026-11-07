@@ -113,31 +113,32 @@ export default function CelebrationScreen({
       <h1 className="animate-rise text-[clamp(1.75rem,min(10vw,9dvh),4.5rem)] leading-tight font-extrabold">
         {heading}
       </h1>
-      {showStars ? (
-        <div
-          className="flex items-center justify-center gap-2"
-          role="img"
-          aria-label={`${score} من ${total} نجوم`}
-        >
-          {Array.from({ length: total }, (_, i) => (
-            <Star
-              key={i}
-              aria-hidden
-              className={`size-[clamp(2.5rem,min(14vw,10dvh),4.5rem)] ${
-                i < score
-                  ? "animate-pop fill-pop-yellow text-amber-500"
-                  : "fill-white/70 text-slate-300"
-              }`}
-              style={{ animationDelay: `${i * 0.25}s` }}
-              strokeWidth={1.5}
-            />
-          ))}
-        </div>
-      ) : (
-        <p className="text-[clamp(1.25rem,5vw,2rem)] font-bold">
-          أجبت على {score} من {total} {questionsWord(total)} بشكل صحيح
-        </p>
-      )}
+      {total > 0 &&
+        (showStars ? (
+          <div
+            className="flex items-center justify-center gap-2"
+            role="img"
+            aria-label={`${score} من ${total} نجوم`}
+          >
+            {Array.from({ length: total }, (_, i) => (
+              <Star
+                key={i}
+                aria-hidden
+                className={`size-[clamp(2.5rem,min(14vw,10dvh),4.5rem)] ${
+                  i < score
+                    ? "animate-pop fill-pop-yellow text-amber-500"
+                    : "fill-white/70 text-slate-300"
+                }`}
+                style={{ animationDelay: `${i * 0.25}s` }}
+                strokeWidth={1.5}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="text-[clamp(1.25rem,5vw,2rem)] font-bold">
+            أجبت على {score} من {total} {questionsWord(total)} بشكل صحيح
+          </p>
+        ))}
       <EndActions
         onPlayAgain={onPlayAgain}
         onChooseCategory={onChooseCategory}

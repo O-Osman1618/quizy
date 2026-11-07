@@ -31,6 +31,8 @@ export default function StoryReader({ story, onExit, onFinish }: Props) {
 
   const page = story.pages[index];
   const isLast = index === story.pages.length - 1;
+  const total = story.pages.length;
+  const progress = ((index + 1) / total) * 100;
 
   const narrate = useCallback(
     (pageIndex: number) => {
@@ -121,26 +123,22 @@ export default function StoryReader({ story, onExit, onFinish }: Props) {
           <X className="size-6" aria-hidden strokeWidth={3} />
         </button>
 
+        <span className="text-base font-bold whitespace-nowrap sm:text-xl">
+          صفحة {index + 1} / {total}
+        </span>
+
         <div
-          className="flex flex-1 items-center justify-center gap-2"
+          className="h-3 min-w-0 flex-1 overflow-hidden rounded-full bg-white/80"
           role="progressbar"
           aria-label="صفحات القصة"
           aria-valuemin={1}
-          aria-valuemax={story.pages.length}
+          aria-valuemax={total}
           aria-valuenow={index + 1}
         >
-          {story.pages.map((p, i) => (
-            <span
-              key={p.id}
-              className={`h-3 rounded-full transition-all duration-300 ${
-                i === index
-                  ? "w-8 bg-pop-purple"
-                  : i < index
-                    ? "w-3 bg-pop-purple/60"
-                    : "w-3 bg-white/90"
-              }`}
-            />
-          ))}
+          <div
+            className="h-full rounded-full bg-pop-purple transition-[width] duration-500"
+            style={{ width: `${progress}%` }}
+          />
         </div>
 
         <SoundToggle />
@@ -153,7 +151,7 @@ export default function StoryReader({ story, onExit, onFinish }: Props) {
             direction === "next" ? "animate-page-next" : "animate-page-prev"
           }`}
         >
-          <div className="relative min-h-[40dvh] flex-1 overflow-hidden rounded-[1.5rem] short:min-h-[62dvh]">
+          <div className="relative min-h-[36dvh] flex-1 overflow-hidden rounded-[1.5rem] short:min-h-0">
             <StoryIllustration
               key={page.id}
               src={assetUrl(story.id, "images", page.image)}
@@ -187,8 +185,8 @@ export default function StoryReader({ story, onExit, onFinish }: Props) {
             </button>
           </div>
 
-          <div className="flex shrink-0 items-center justify-center gap-3 px-1 pb-1 short:w-[38%] short:flex-col short:justify-center">
-            <p className="text-center text-[clamp(1.375rem,min(6vw,4.4dvh),2.25rem)] leading-relaxed font-extrabold short:text-[clamp(1.125rem,4.5dvh,1.75rem)]">
+          <div className="flex min-h-0 shrink-0 flex-col items-center gap-3 px-1 pb-1 short:w-[38%] short:max-h-full short:justify-center">
+            <p className="min-h-0 w-full max-w-prose overflow-y-auto whitespace-pre-line px-2 text-start text-[clamp(0.9375rem,min(3.8vw,2.8dvh),1.25rem)] leading-snug font-bold short:text-[clamp(0.8125rem,3.2dvh,1.0625rem)]">
               {page.text}
             </p>
             <button

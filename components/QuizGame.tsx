@@ -89,6 +89,13 @@ export default function QuizGame() {
   }
 
   function finishStory() {
+    // Stories without a quiz yet skip straight to the celebration screen.
+    if (!story || story.quiz.length === 0) {
+      playCelebrate();
+      setStoryScore(0);
+      setPhase("storyEnd");
+      return;
+    }
     setPhase("storyQuiz");
   }
 
@@ -161,7 +168,10 @@ export default function QuizGame() {
         <CelebrationScreen
           score={storyScore}
           total={story.quiz.length}
-          showStars
+          showStars={story.quiz.length > 0}
+          heading={
+            story.quiz.length > 0 ? undefined : "أحسنت! انتهت القصة 🎉"
+          }
           playAgainLabel="اقرأ القصة مرة أخرى"
           chooseLabel="قصص أخرى"
           onPlayAgain={() => startStory(story)}
